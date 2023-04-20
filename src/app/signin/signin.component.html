@@ -1,0 +1,25 @@
+<div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+  <form class="row g-3 flex-column align-items-center bg-light p-5 rounded-3" [formGroup]="inputform" style="max-width: 500px;">
+    <h2 class="text-center mb-5" style="color: #007bff;">Sign in here !</h2>
+    <div class="col-auto">
+      <label for="staticEmail2" class="visually-hidden">Email</label>
+      <input type="text" class="form-control form-control-lg" id="staticEmail2" placeholder="Email" formControlName="inputemail">
+      <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputemail'].errors?.['required'] ">
+        mail is required!
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputemail'].errors?.['email'] ">
+        please respect the syntax of an email!
+      </div>
+    </div>
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Password</label>
+      <input type="password" class="form-control form-control-lg" id="inputPassword2" placeholder="Password" formControlName="inputpassword">
+      <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputpassword'].errors?.['required']">
+        password is required!
+      </div>
+    </div>
+    <div class="col-auto">
+      <button type="submit" (click)="onsubmit()" class="btn btn-primary btn-lg mb-3">Sign up</button>
+    </div>
+  </form>
+</div>

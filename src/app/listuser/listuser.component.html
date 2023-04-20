@@ -1,0 +1,41 @@
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+ 
+    <h2  style="margin-top: 30px;" >list of the clients</h2>
+  
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Firstname</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">phone</th>
+        <th scope="col">ville</th>
+        <th scope="col">adress</th>
+        <th scope="col">email</th>
+        <th scope="col">update</th>
+        <th scope="col">delete</th>        
+      </tr>
+    </thead>
+    <tbody>
+        <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
+        et acceder a ces attribut par user.name ou user.phone -->
+      <tr *ngFor="let cl of tabclients.slice(0, visibleRows)">
+        <th scope="row">{{cl.id_user}}</th>
+        <td>{{cl.firstName}}</td>
+        <td>{{cl.lastName}}</td>
+        <td>{{cl.phone}}</td>
+        <td>{{cl.city}}</td>
+        <td>{{cl.adress}}</td>
+        <td>{{cl.email}}</td>
+        <td><input type="button" value="update" (click)="updateuser(cl.id_user)"></td>
+        <td><input type="button" value="delete" (click)="deleteuser(cl.id_user)"></td>
+      </tr>
+    
+    </tbody>
+  </table>
+  <div style="display:flex; flex-direction:column; align-items:center;">
+  <button *ngIf="tabclients.length > visibleRows" (click)="showMore()">Afficher plus</button>
+  <button *ngIf="previousVisibleRows !== visibleRows" (click)="showPrevious()">Revenir en arrière</button>
+  </div>
+</div>
+

@@ -1,0 +1,58 @@
+.mat-drawer-container {
+    background-color: blue; /* Couleur de fond */
+  }
+  
+  .mat-drawer-content {
+    background-color: #fff; /* Couleur de fond du contenu */
+    color:white; /* Couleur du texte */
+    font-family: 'Roboto', sans-serif; /* Police */
+    padding: 20px; /* Espace intérieur */
+  }
+  
+  .mat-toolbar {
+    background-color: #2c3e50; /* Couleur de fond de la barre d'outils */
+    color: #fff; /* Couleur du texte de la barre d'outils */
+    font-size: 24px; /* Taille de la police de la barre d'outils */
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Marge inférieure */
+  }
+  
+  .logo img {
+    height: 40px; /* Taille du logo */
+    margin-right: 10px; /* Marge droite */
+  }
+  
+  .mat-nav-list {
+    padding: 0;
+  }
+  
+  a.mat-list-item {
+    color: #333; /* Couleur du texte des liens */
+    font-size: 18px; /* Taille du texte des liens */
+    margin-bottom: 10px; /* Marge inférieure des liens */
+    text-decoration: none; /* Pas de soulignement pour les liens */
+    transition: background-color 0.3s ease; /* Transition pour l'effet hover */
+  }
+  
+  a.mat-list-item:hover {
+    background-color: #2c3e50; /* Couleur de fond lorsqu'on passe sur un lien */
+    color: #fff; /* Couleur du texte lorsqu'on passe sur un lien */
+  }
+  
+  a.list-item-active {
+    background-color: #2c3e50; /* Couleur de fond pour le lien actif */
+    color: #fff; /* Couleur du texte pour le lien actif */
+  }
+  
+  h2.mat-subheader {
+    margin-top: 20px; /* Marge supérieure pour le titre */
+    color: #2c3e50; /* Couleur du titre */
+    font-size: 20px; /* Taille de la police pour le titre */
+    font-weight: bold; /* Graisse du texte pour le titre */
+  }
+  

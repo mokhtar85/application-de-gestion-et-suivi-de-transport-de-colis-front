@@ -1,0 +1,57 @@
+footer {
+    background-color: #f5f5f5; /* couleur de fond du footer */
+    padding: 50px 0; /* espace interne du footer */
+    font-size: 16px; /* taille de police globale du footer */
+  }
+  
+  footer h4 {
+    font-size: 22px; /* taille de police des titres de section */
+    font-weight: bold; /* épaisseur de police des titres de section */
+    margin-bottom: 20px; /* espace entre les titres et le contenu */
+  }
+  
+  footer ul {
+    list-style: none; /* supprime les puces des listes */
+    margin: 0; /* supprime les marges par défaut */
+    padding: 0; /* supprime les marges par défaut */
+  }
+  
+  footer li {
+    margin-bottom: 10px; /* espace entre chaque élément de la liste */
+  }
+  
+  footer a {
+    color: #333; /* couleur des liens */
+    text-decoration: none; /* supprime le soulignement des liens */
+    transition: color 0.3s ease; /* ajoute une transition fluide lorsqu'on survole les liens */
+  }
+  
+  footer a:hover {
+    color: #428bca; /* couleur des liens survolés */
+  }
+  
+  .social-icons {
+    display: flex; /* affiche les icônes de médias sociaux en ligne */
+    justify-content: center; /* centre les icônes horizontalement */
+  }
+  
+  .social-icons li {
+    margin: 0 10px; /* espace entre chaque icône */
+  }
+  
+  .social-icons a {
+    display: block; /* convertit les icônes en blocs pour leur donner une largeur et une hauteur */
+    width: 40px; /* largeur des icônes */
+    height: 40px; /* hauteur des icônes */
+    text-align: center; /* centre les icônes horizontalement */
+    line-height: 40px; /* centre les icônes verticalement */
+    background-color: #333; /* couleur de fond des icônes */
+    color: #fff; /* couleur de police des icônes */
+    border-radius: 50%; /* arrondit les coins des icônes */
+    transition: background-color 0.3s ease; /* ajoute une transition fluide lorsqu'on survole les icônes */
+  }
+  
+  .social-icons a:hover {
+    background-color: #428bca; /* couleur de fond des icônes survolées */
+  }
+  

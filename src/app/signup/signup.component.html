@@ -1,0 +1,64 @@
+<div style="text-align:center;">
+  <h2 style="color: blue;">Sign up here!</h2>
+  <form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;">
+    <div class="col-md-6">
+        <label for="Firstname" class="form-label">Firstname</label>
+        <input type="text" class="form-control" id="inputFirstname" formControlName="inputFirstname"  >
+        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputFirstname'].errors?.['required']">
+            Firstname is required!
+          </div>
+    </div>
+      <div class="col-md-6">
+        <label for="Lastname" class="form-label">Lastname</label>
+        <input type="text" class="form-control" id="inputLastName" formControlName="inputLastName">
+        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputLastName'].errors?.['required']">
+            Lastname is required
+          </div>
+    </div>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" formControlName="inputEmail">
+      <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputEmail'].errors?.['required'] ">
+        mail is required!
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputEmail'].errors?.['email'] ">
+        please respect the syntaxe of an email!
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" formControlName="inputPassword">
+      <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPassword'].errors?.['required']">
+        please enter your password! </div>
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword5" class="form-label">Confirm password</label>
+        <input type="password" class="form-control" id="inputPassword5" formControlName="inputPassword2">
+        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPassword2'].errors?.['required']">
+            please Confirm your password!
+        </div>  
+    </div>
+      <div class="col-md-6">
+        <label for="Username" class="form-label">Usrname</label>
+        <input type="text" class="form-control" id="inputUsername" formControlName="inputUsername">
+        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputUsername'].errors?.['required']">
+            username is required!
+        </div>  
+    </div>
+    <div class="col-md-6">
+      <label for="phone" class="form-label">phone number</label>
+      <input type="text" id="phone" name="phone" class="form-control" formControlName="inputphone">
+    </div>
+  <div class="col-md-6">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" formControlName="inputAddress">
+  </div>
+  <div class="col-12">
+    <label for="inputCity" class="form-label">city</label>
+    <input type="text" class="form-control" id="inputCity" formControlName="inputCity" >
+  </div>
+  <div class="col-12">
+      <button type="submit" class="btn btn-primary" (click)="addclient  ()">Sign up</button>
+    </div>
+  </form>
+  </div> 

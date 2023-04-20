@@ -1,0 +1,35 @@
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+  <h2 style="margin-top: 50px;">List of collies</h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id_command</th>
+        <th scope="col">weight</th>
+        <th scope="col">type</th>
+        <th scope="col">size</th>
+        <th scope="col">date</th>
+        <th scope="col">city</th>
+        <th scope="col">price</th>
+        <th scope="col">update</th>
+        <th scope="col">delete</th>
+            
+      </tr>
+    </thead>
+    <tbody>
+            <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
+            et acceder a ces attribut par user.name ou user.phone -->
+          <tr *ngFor="let cm of tabCommand">
+            <th scope="row">{{cm.idCmd}}</th>
+            <td>{{cm.weight}}</td>
+            <td>{{cm.type}}</td>
+            <td>{{cm.size}}</td>
+            <td>{{cm.date}}</td>
+            <td>{{cm.city}}</td>
+            <td>{{cm.price}}</td>
+            <td><input type="button" value="update" (click)="updateuser(cm.idCmd)"></td>
+            <td><input type="button" value="delete" (click)="deleteuser(cm.idCmd)"></td>
+          </tr>
+        
+        </tbody>
+</table>
+</div>
