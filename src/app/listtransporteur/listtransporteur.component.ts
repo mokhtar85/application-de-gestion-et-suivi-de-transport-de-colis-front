@@ -24,8 +24,24 @@ ngOnInit(): void {
       window.dispatchEvent(new Event('resize'));
     }, 300);
 }
-updateTransporteur(id:number){}
-deleteTransporteur(id:number){}
+updateTransporteur(id:number){
+  this.router.navigate(["/updateTransporteur",id]);
+}
+deleteTransporteur(id:number){
+  this.transpServ.deleteTransport(id).subscribe(
+    (cmd)=>{
+      this.transpServ.getAllTransporters().subscribe(
+        (listc)=>{
+          this.tabtransporteur=listc;
+        
+         
+    
+        }
+       
+      )
+    }
+  )
+}
 showMore() {
   this.previousVisibleRows = this.visibleRows; // enregistrer l'état précédent de visibleRows
   this.visibleRows += 10; // charger 10 entrées supplémentaires

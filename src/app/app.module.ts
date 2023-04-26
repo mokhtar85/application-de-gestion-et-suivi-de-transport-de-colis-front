@@ -30,6 +30,9 @@ import {  MatCardModule } from '@angular/material/card';
 import { CardComponent } from './card/card.component';
 import { ListtransporteurComponent } from './listtransporteur/listtransporteur.component';
 import { UserheaderComponent } from './userheader/userheader.component';
+import { UpdatecollieComponent } from './updatecollie/updatecollie.component';
+import { UpdateTransporteurComponent } from './update-transporteur/update-transporteur.component';
+import { ClientComponent } from './client/client.component';
 
 
 
@@ -55,6 +58,9 @@ import { UserheaderComponent } from './userheader/userheader.component';
     CardComponent,
     ListtransporteurComponent,
     UserheaderComponent,
+    UpdatecollieComponent,
+    UpdateTransporteurComponent,
+    ClientComponent,
     
   ],
   imports: [

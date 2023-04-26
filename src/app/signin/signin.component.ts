@@ -30,7 +30,7 @@ export class SigninComponent implements OnInit {
     if(this.inputform.valid)
     {
       console.log("formulaire valide !!")
-      this.route.navigate(['/admin/dashbord'])
+      this.route.navigate(['/client'])
     }
     else{
       console.log("formulaire non valide!!!")

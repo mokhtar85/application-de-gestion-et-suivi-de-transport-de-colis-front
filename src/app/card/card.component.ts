@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
+import { UserService } from '../services/user.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-widget-card',
   templateUrl: './card.component.html',
@@ -14,7 +16,8 @@ export class CardComponent implements OnInit{
   
   Highcharts=Highcharts;
   chartOptions!: {};
-  constructor(){
+  numberOfClients: number = 0;
+  constructor(private userService: UserService){
 
   }
   ngOnInit(): void {
@@ -45,15 +48,17 @@ export class CardComponent implements OnInit{
         enabled:false,
       },
       series: [{
-        data: [71, 78, 39, 66]
+        data: [this.numberOfClients]
       }]
   };
+
   HC_exporting(Highcharts);
   setTimeout(()=> {
     window.dispatchEvent(
       new Event('resize')
     );
   }, 300);
+  
 }
 
 }

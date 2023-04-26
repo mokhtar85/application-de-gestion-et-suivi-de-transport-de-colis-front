@@ -15,6 +15,8 @@ export class UserService {
   readonly upadteClient="/updateClient"
   readonly deleteClient="/deleteUser"
   readonly addClient="/addClientWithoutRole"
+  readonly getNombreClient="/nombre"
+  readonly login="/login"
 
   constructor(private http: HttpClient ) { }
   getAllUsers():Observable<Client[]>
@@ -34,5 +36,13 @@ export class UserService {
   addclient(client:Client):Observable<Client>{
     return this.http.post<Client>(this.API_URL+this.addClient,client)
   }
+  getNumberUsers():Observable<Client[]>
+  {
+   return this.http.get<Client[]>(this.API_URL+this.getNombreClient)
+  }
+  
+  
+
+
 }
 

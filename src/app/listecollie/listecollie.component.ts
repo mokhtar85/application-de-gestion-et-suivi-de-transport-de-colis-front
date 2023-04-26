@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Command } from '../models/Command.models';
 import { Router } from '@angular/router';
 import { CommandService } from '../services/command.service';
+import { identity } from 'rxjs';
 
 @Component({
   selector: 'app-listecollie',
@@ -22,10 +23,22 @@ ngOnInit(): void {
     window.dispatchEvent(new Event('resize'));
   }, 300); 
 }
-updateuser(id:number){
-
+updateCmd(id:number){
+  this.router.navigate(["/updatecollie",id])
 }
-deleteuser(id:number){
-
+deleteCmd(id:number){
+  this.Commandserv.deleteCmd(id).subscribe(
+    (cmd)=>{
+      this.Commandserv.getAllCommands().subscribe(
+        (listc)=>{
+          this.tabCommand=listc;
+          // Naviguer vers la page actuelle pour rafraîchir la page
+         
+    
+        }
+       
+      )
+    }
+  )
 }
 }

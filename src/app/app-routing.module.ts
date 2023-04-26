@@ -16,6 +16,9 @@ import { CardComponent } from './card/card.component';
 import { AddcolieComponent } from './addcolie/addcolie.component';
 import { ListtransporteurComponent } from './listtransporteur/listtransporteur.component';
 import { UserheaderComponent } from './userheader/userheader.component';
+import { UpdatecollieComponent } from './updatecollie/updatecollie.component';
+import { UpdateTransporteurComponent } from './update-transporteur/update-transporteur.component';
+import { ClientComponent } from './client/client.component';
 
 const routes: Routes = [
   {path: "", component:HomeComponent},
@@ -26,7 +29,8 @@ const routes: Routes = [
   {path: "updateuser/:id", component:UpdateuserComponent},
   {path: "signup", component:SignupComponent},
   {path: "addcollie", component:AddcolieComponent},
-  
+  {path: "updatecollie/:id", component:UpdatecollieComponent},
+  {path:"updateTransporteur/:id",component:UpdateTransporteurComponent},
   
     {
       path: 'admin',
@@ -72,7 +76,17 @@ const routes: Routes = [
           component: CardComponent
         }
       ]
+    },
+    {
+      path: 'client',
+      component: ClientComponent,
+      children: [
+        {
+          
+        }
+      ]
     }
+    
   
  
   
