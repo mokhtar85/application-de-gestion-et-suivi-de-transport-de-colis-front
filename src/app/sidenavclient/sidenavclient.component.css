@@ -1,0 +1,35 @@
+.sidebar {
+  height: 100%;
+  padding-top: 20px;
+}
+
+.nav-pills .nav-link {
+  color: #555;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.nav-pills .nav-link:focus, .nav-pills .nav-link:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.nav-pills .nav-link i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+.nav-item {
+  margin-bottom: 10px;
+}
+.welcome-section{
+  background-color: aqua;
+}

@@ -33,6 +33,8 @@ import { UserheaderComponent } from './userheader/userheader.component';
 import { UpdatecollieComponent } from './updatecollie/updatecollie.component';
 import { UpdateTransporteurComponent } from './update-transporteur/update-transporteur.component';
 import { ClientComponent } from './client/client.component';
+import { SidenavclientComponent } from './sidenavclient/sidenavclient.component';
+import { NavbarclientComponent } from './navbarclient/navbarclient.component';
 
 
 
@@ -61,6 +63,8 @@ import { ClientComponent } from './client/client.component';
     UpdatecollieComponent,
     UpdateTransporteurComponent,
     ClientComponent,
+    SidenavclientComponent,
+    NavbarclientComponent,
     
   ],
   imports: [

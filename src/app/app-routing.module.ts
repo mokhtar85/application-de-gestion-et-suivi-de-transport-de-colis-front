@@ -19,6 +19,8 @@ import { UserheaderComponent } from './userheader/userheader.component';
 import { UpdatecollieComponent } from './updatecollie/updatecollie.component';
 import { UpdateTransporteurComponent } from './update-transporteur/update-transporteur.component';
 import { ClientComponent } from './client/client.component';
+import { SidenavclientComponent } from './sidenavclient/sidenavclient.component';
+import { NavbarComponent } from 'ng-cdbangular';
 
 const routes: Routes = [
   {path: "", component:HomeComponent},
@@ -31,6 +33,9 @@ const routes: Routes = [
   {path: "addcollie", component:AddcolieComponent},
   {path: "updatecollie/:id", component:UpdatecollieComponent},
   {path:"updateTransporteur/:id",component:UpdateTransporteurComponent},
+  {path: "client", component:ClientComponent},
+  {path: "sidnavclient", component:SidenavclientComponent},
+
   
     {
       path: 'admin',
@@ -82,10 +87,16 @@ const routes: Routes = [
       component: ClientComponent,
       children: [
         {
-          
+          path: 'sidenavclient',
+          component: SidenavclientComponent
+        },
+        {
+          path: 'navbarclient',
+          component: NavbarComponent
         }
       ]
     }
+    
     
   
  

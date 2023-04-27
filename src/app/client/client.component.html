@@ -1,1 +1,19 @@
-<p>client works!</p>
+ <!--<div class="row body">
+    <div class="col-lg-2" *ngIf="showHideSidenav">
+    <app-sidenavclient></app-sidenavclient>
+  
+</div >
+  <div class="col-lg-10">
+   <button (click)="showHideSidenav">show/hide</button>
+    <router-outlet></router-outlet>
+  </div>
+</div>-->
+<div class="row body">
+<div class="col-lg-2" *ngIf="showHideSidenav">
+<app-sidenavclient></app-sidenavclient>
+</div>
+<div class="col-lg-10">
+  <app-navbarclient [showSidenav]="showHideSidenav" (showSidenavChange)="onshowSidenavChange($event)"></app-navbarclient>
+   
+ </div>
+</div>
