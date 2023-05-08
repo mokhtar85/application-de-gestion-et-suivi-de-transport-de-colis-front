@@ -1,0 +1,49 @@
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <h2 style="margin-top: 50px;">List of collies</h2>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id_command</th>
+          <th scope="col">type</th>
+          <th scope="col">date</th>
+          <th scope="col">city</th>
+          <th scope="col">suivie command</th>
+              
+        </tr>
+      </thead>
+      <tbody>
+        <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
+        et acceder a ces attribut par user.name ou user.phone -->
+      <tr >
+        <th ></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input type="button" value="suivie" data-bs-toggle="modal"
+          data-bs-target="#addModal" ></td>
+        
+      </tr>
+    
+    </tbody>
+</table>
+</div>
+<div class="modal" tabindex="-1" id="addModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <div class="modal-body" style="position: absolute">
+
+            <div class="map-container" style="position: realative">
+                <div class="map-frame">
+                  <div id="map"></div>
+                </div>
+              </div>
+
+           </div>
+            <div class="modal-footer">
+                <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                
+              </div>
+            </div>
+          </div>
+        </div>

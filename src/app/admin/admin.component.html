@@ -11,19 +11,19 @@
  
     <router-outlet></router-outlet>
   </div>-->
-  <div class="app" style="display: flex; height: 100vh; overflow:scroll initial">
-    
-    <CDBSidebar textColor="#ffffff" backgroundColor="#333333">
-      
-      <app-sidenav></app-sidenav>
-    </CDBSidebar>
-    <div   style="display: flex; flex-direction: column; flex-grow: 1; overflow: auto;">
-      <div style="height: 100%; position: relative;">
-        <app-userheader></app-userheader>
+  
+  <div class="row body">
+    <div class="col-lg-2" *ngIf="showHideSidenav">
+    <app-sidenav></app-sidenav>
+    </div>
+    <div class="col-lg-10">
+     
       <router-outlet></router-outlet>
+     
+       
+     </div>
+     
     </div>
-    </div>
-  </div>
   
   
   

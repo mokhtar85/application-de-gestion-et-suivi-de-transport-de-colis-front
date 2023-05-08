@@ -1,4 +1,4 @@
-<mat-nav-list class="sidenav">
+<!--<mat-nav-list class="sidenav">
   <div class="logo py-4">
     <img src="./assets/images/images.png" alt="Company Logo" />
   </div>
@@ -23,3 +23,38 @@
     <mat-icon>help</mat-icon> Help
   </a>
 </mat-nav-list>
+-->
+<nav class="hidden-xs-down bg-faded sidebar">
+    <header class="welcome-section">
+        <div class="container">
+            <div class="logo">
+                <img src="./assets/images/images.png" alt="[nom de votre entreprise]">
+              </div>
+          <h1>Welcome</h1>
+        </div>
+      </header>
+      <mat-divider></mat-divider>
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page"   routerLinkActive="list-item-active" routerLink="/admin/dashbord">
+          <i class="fas fa-home"></i>  Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="list-item-active" routerLink="/admin/listuser">
+          <i class="fas fa-shopping-cart"></i> liste de users
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="list-item-active" routerLink="/admin/listecollie">
+          <i class="fas fa-truck"></i> liste de collie
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="list-item-active" routerLink="/admin/listTransporteur">
+          <i class="fas fa-user"></i> liste de transporteurs
+        </a>
+      </li>
+    </ul>
+  </nav>
+  

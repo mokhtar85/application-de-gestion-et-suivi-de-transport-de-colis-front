@@ -1,0 +1,13 @@
+.titre:hover, .titre:focus{
+    color: #fff;
+    background-color:grey;
+    border-color: grey;
+}
+.titre{
+    color: #555;
+  font-size: 50px;
+  font-weight: 500;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+}

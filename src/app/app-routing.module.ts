@@ -12,7 +12,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ListecollieComponent } from './listecollie/listecollie.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { AreaComponent } from './area/area.component';
-import { CardComponent } from './card/card.component';
 import { AddcolieComponent } from './addcolie/addcolie.component';
 import { ListtransporteurComponent } from './listtransporteur/listtransporteur.component';
 import { UserheaderComponent } from './userheader/userheader.component';
@@ -21,7 +20,10 @@ import { UpdateTransporteurComponent } from './update-transporteur/update-transp
 import { ClientComponent } from './client/client.component';
 import { SidenavclientComponent } from './sidenavclient/sidenavclient.component';
 import { NavbarComponent } from 'ng-cdbangular';
-
+import { UsercommandComponent } from './usercommand/usercommand.component';
+import { ChartComponent } from './chart/chart.component';
+import { MaptrackingComponent } from './maptracking/maptracking.component';
+import { ListcommandclientComponent } from './listcommandclient/listcommandclient.component';
 const routes: Routes = [
   {path: "", component:HomeComponent},
   {path: "", component:HeaderComponent},
@@ -30,7 +32,6 @@ const routes: Routes = [
   
   {path: "updateuser/:id", component:UpdateuserComponent},
   {path: "signup", component:SignupComponent},
-  {path: "addcollie", component:AddcolieComponent},
   {path: "updatecollie/:id", component:UpdatecollieComponent},
   {path:"updateTransporteur/:id",component:UpdateTransporteurComponent},
   {path: "client", component:ClientComponent},
@@ -57,6 +58,7 @@ const routes: Routes = [
           path: 'dashbord',
           component: DashbordComponent
         },
+      
           {
             path: 'listTransporteur',
             component: ListtransporteurComponent
@@ -68,20 +70,7 @@ const routes: Routes = [
 
       ]
     },
-    {
-      path: 'dashbord',
-      component: DashbordComponent,
-      children: [
-        {
-          path: 'area',
-          component: AreaComponent
-        },
-        {
-          path: 'card',
-          component: CardComponent
-        }
-      ]
-    },
+  
     {
       path: 'client',
       component: ClientComponent,
@@ -93,7 +82,11 @@ const routes: Routes = [
         {
           path: 'navbarclient',
           component: NavbarComponent
-        }
+        },
+        {path: "addcollie", component:AddcolieComponent},
+        {path: "listcommandclient", component:ListcommandclientComponent},
+        {path: "maptracking", component:MaptrackingComponent}
+
       ]
     }
     

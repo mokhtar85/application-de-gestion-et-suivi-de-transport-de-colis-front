@@ -13,7 +13,7 @@ export class CommandService {
   readonly getCollieById="/getCmdById"
   readonly updateCmd="/updateCommand"
   readonly deleteCommand="/deleteCmd"
-
+  readonly getnumbercommand="/numbercommands"
   constructor(private http: HttpClient) { }
   getAllCommands():Observable<Command[]>
   {
@@ -27,11 +27,15 @@ export class CommandService {
   {
     return this.http.get<Command>(this.API_URL+this.getCollieById+"/"+id)
   }
-  updateclient(idCmd: number,cl:Command):Observable<Command> {
+  updateCommand(idCmd: number,cl:Command):Observable<Command> {
     return this.http.put<Command>(this.API_URL+this.updateCmd+"/"+idCmd,cl)
   }
-  deleteCmd(idCmd: number):Observable<Command> {
-    return this.http.delete<Command>(this.API_URL+this.deleteCommand+"/"+idCmd)
+  deleteCmd(idCmd: number):Observable<number> {
+    return this.http.delete<number>(this.API_URL+this.deleteCommand+"/"+idCmd)
+  }
+  getnumbercommands():Observable<number>
+  {
+   return this.http.get<number>(this.API_URL+this.getnumbercommand)
   }
 
 }

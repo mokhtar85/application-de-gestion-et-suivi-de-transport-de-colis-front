@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Transporteur } from '../models/Transporteur.models';
 import { Router } from '@angular/router';
 import { TransporteurService } from '../services/transporteur.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-listtransporteur',
@@ -9,11 +10,35 @@ import { TransporteurService } from '../services/transporteur.service';
   styleUrls: ['./listtransporteur.component.css']
 })
 export class ListtransporteurComponent implements OnInit {
+    public showModal=false;
+    currentTransporter!:Transporteur
   tabtransporteur:Transporteur[]=[];
-  visibleRows = 5;
-  previousVisibleRows = 5;
-constructor (private router:Router,private transpServ:TransporteurService){}
+  inputform!:FormGroup
+  TransorterModelObj:Transporteur=new Transporteur();
+  currentPage = 1;
+  itemsPerPage = 5;
+ 
+constructor (private router:Router,private transpServ:TransporteurService,private fb: FormBuilder){}
 ngOnInit(): void {
+  this.inputform=this.fb.group({
+    
+    "inputFirstname":["",Validators.required],
+    "inputLastName":["",Validators.required],
+   "inputEmail":["",[Validators.required,Validators.email]],
+   "inputPassword":["",Validators.required],
+   "inputPassword2":["",Validators.required],
+    "inputUsername":["",Validators.required],
+    "inputphone":["",Validators.required],
+    "inputAddress":["",Validators.required],
+    "inputCity":["",Validators.required],
+    "inputnImmatricualtion":["",Validators.required],
+    "inputCin":["",Validators.required],
+
+   }
+
+  
+  )
+
   this.transpServ.getAllTransporters().subscribe(
     (tabt)=>{
       this.tabtransporteur=tabt;
@@ -29,24 +54,59 @@ updateTransporteur(id:number){
 }
 deleteTransporteur(id:number){
   this.transpServ.deleteTransport(id).subscribe(
-    (cmd)=>{
-      this.transpServ.getAllTransporters().subscribe(
-        (listc)=>{
-          this.tabtransporteur=listc;
-        
-         
-    
-        }
-       
-      )
+    (trns)=>{
+      this.getAllTransporters();
+      console.log("success");
     }
   )
 }
-showMore() {
-  this.previousVisibleRows = this.visibleRows; // enregistrer l'état précédent de visibleRows
-  this.visibleRows += 10; // charger 10 entrées supplémentaires
+addTransporterDetails(){
+  this.TransorterModelObj.firstName=this.inputform.value.inputFirstname;
+  this.TransorterModelObj.lastName=this.inputform.value.inputLastName;
+  this.TransorterModelObj.adress=this.inputform.value.inputAddress;
+  this.TransorterModelObj.userName=this.inputform.value.inputUsername;
+  this.TransorterModelObj.city=this.inputform.value.inputCity;
+  this.TransorterModelObj.confirmPassword=this.inputform.value.inputPassword;
+  this.TransorterModelObj.password=this.inputform.value.inputPassword;
+  this.TransorterModelObj.email=this.inputform.value.inputEmail;
+  this.TransorterModelObj.phone=this.inputform.value.inputphone;
+  this.TransorterModelObj.nImmatricualtion=this.inputform.value.inputnImmatricualtion;
+  this.TransorterModelObj.cin=this.inputform.value.inputCin;
+
+
+  this.transpServ.addTransporter(this.TransorterModelObj).subscribe(
+    res=>{
+      console.log(res);
+      alert("client ajouter avec succes!")
+      let ref=document.getElementById('cancel')
+      ref?.click()
+      this.inputform.reset();
+      this.getAllTransporters();
+    },
+    err=>{
+      console.log("error",err)
+      alert("something went wrong!")
+    }
+  )
+
 }
-showPrevious() {
-  this.visibleRows = this.previousVisibleRows; // rétablir l'état précédent de visibleRows
+getAllTransporters(){
+  this.transpServ.getAllTransporters().subscribe(res=>{
+    this.tabtransporteur=res;
+    console.log("clientData: ", this.tabtransporteur);
+  })
+
 }
+public getTransporter(transporter : Transporteur){
+      console.log(transporter);
+      this.showModal=true;
+      this.currentTransporter=transporter;
+    }
+    public closeModal(event:boolean){
+      let ref = document.getElementById('cancel')
+      ref?.click();
+      this.showModal=event;
+      this.getAllTransporters();
+    }
+
 }

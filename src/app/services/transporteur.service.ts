@@ -12,6 +12,8 @@ export class TransporteurService {
   readonly getTransporteurById="/getTranspById"
   readonly updateTransporteur="/updateTrans"
   readonly deleteTransporteur="/deleteTrans"
+  readonly getnumbertransporters="/numbertransporters"
+  readonly addtransporter="/addTransporteur"
   constructor(private http: HttpClient) { }
   getAllTransporters():Observable<Transporteur[]>{
     return this.http.get<Transporteur[]>(this.API_URL+this.getTransporteur)
@@ -19,11 +21,16 @@ export class TransporteurService {
   getTransportById(id:number):Observable<Transporteur>{
     return this.http.get<Transporteur>(this.API_URL+this.getTransporteurById+"/"+id)
   }
-  updateclient(id: number,tr:Transporteur):Observable<Transporteur> {
+  updateTransporter(id: number,tr:Transporteur):Observable<Transporteur> {
     return this.http.put<Transporteur>(this.API_URL+this.updateTransporteur+"/"+id,tr)
   }
-  deleteTransport(id:number):Observable<Transporteur>{
-    return this.http.delete<Transporteur>(this.API_URL+this.deleteTransporteur+"/"+id)
+  deleteTransport(id:number):Observable<number>{
+    return this.http.delete<number>(this.API_URL+this.deleteTransporteur+"/"+id)
   }
- 
+  getNumberTransporters():Observable<number>{
+    return this.http.get<number>(this.API_URL+this.getnumbertransporters)
+  }
+  addTransporter(transporter:Transporteur):Observable<Transporteur>{
+    return this.http.post<Transporteur>(this.API_URL+this.addtransporter,transporter)
+  }
 }

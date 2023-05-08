@@ -1,3 +1,11 @@
+<p>
+  <mat-toolbar color="primary">
+   
+    <span>Collies Application List</span>
+    <span class="example-spacer"></span>
+    <button  class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#addModal">Add Collies</button>
+  </mat-toolbar>
+</p>
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
   <h2 style="margin-top: 50px;">List of collies</h2>
 <table class="table">
@@ -18,7 +26,7 @@
     <tbody>
             <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
             et acceder a ces attribut par user.name ou user.phone -->
-          <tr *ngFor="let cm of tabCommand">
+          <tr *ngFor="let cm of tabCommand  | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
             <th scope="row">{{cm.idCmd}}</th>
             <td>{{cm.weight}}</td>
             <td>{{cm.type}}</td>
@@ -26,10 +34,80 @@
             <td>{{cm.date}}</td>
             <td>{{cm.city}}</td>
             <td>{{cm.price}}</td>
-            <td><input type="button" value="update" (click)="updateCmd(cm.idCmd)"></td>
-            <td><input type="button" value="delete" (click)="deleteCmd(cm.idCmd)"></td>
+            <td><button   class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal" (click)="getClient(cm)">
+              update</button></td>
+            <td><input type="button" value="delete" class="btn btn-danger" (click)="deleteCmd(cm.idCmd)"></td>
           </tr>
         
         </tbody>
 </table>
+<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+</div>
+<!--Add modal-->
+<div class="modal" tabindex="-1" id="addModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User management</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div style="text-align:center;">
+          <h2 style="color: blue;">update the collie here!</h2>
+          <form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;">
+            <div class="col-md-6">
+                <label for="wieght" class="form-label">wieght</label>
+                <input type="text" class="form-control" id="inputwieght" formControlName="inputwieght"  >
+                <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputwieght'].errors?.['required']">
+                  wieght is required!
+                  </div>
+            </div>
+              <div class="col-md-6">
+                <label for="type" class="form-label">Type of collie</label>
+                <input type="text" class="form-control" id="inputtype" formControlName="inputtype">
+                <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputtype'].errors?.['required']">
+                    type is required
+                  </div>
+            </div>
+            <div class="col-md-6">
+              <label for="size" class="form-label">Size</label>
+              <input type="text" class="form-control" id="inputSize" formControlName="inputSize">
+              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputSize'].errors?.['required'] ">
+                size is required!
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputDate" class="form-label">Date</label>
+              <input type="text" class="form-control" id="inputDate" formControlName="inputDate">
+              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputDate'].errors?.['required']">
+                please enter the Date! </div>
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">Confirm city</label>
+                <input type="text" class="form-control" id="inputCity" formControlName="inputCity">
+                <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputCity'].errors?.['required']">
+                    please Confirm your city!
+                </div>  
+            </div>
+              <div class="col-md-6">
+                <label for="price" class="form-label">price</label>
+                <input type="text" class="form-control" id="inputPrice" formControlName="inputPrice">
+                <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPrice'].errors?.['required']">
+                    price is required!
+                </div>  
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel"  data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addcollie()">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- update modal -->
+<div class="modal" tabindex="-1" id="updateModal">
+  <app-updatecollie [currentColis]="currentColis" (closeModal)="closeModal($event)"></app-updatecollie>
 </div>

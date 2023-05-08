@@ -27,7 +27,6 @@ import { AreaComponent } from './area/area.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {  MatCardModule } from '@angular/material/card';
-import { CardComponent } from './card/card.component';
 import { ListtransporteurComponent } from './listtransporteur/listtransporteur.component';
 import { UserheaderComponent } from './userheader/userheader.component';
 import { UpdatecollieComponent } from './updatecollie/updatecollie.component';
@@ -35,7 +34,17 @@ import { UpdateTransporteurComponent } from './update-transporteur/update-transp
 import { ClientComponent } from './client/client.component';
 import { SidenavclientComponent } from './sidenavclient/sidenavclient.component';
 import { NavbarclientComponent } from './navbarclient/navbarclient.component';
-
+import { UsercommandComponent } from './usercommand/usercommand.component';
+import { ChartModule } from 'angular2-chartjs';
+import 'chart.js';
+import { ChartComponent } from './chart/chart.component';
+import { MaptrackingComponent } from './maptracking/maptracking.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { ListcommandclientComponent } from './listcommandclient/listcommandclient.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CardComponent } from './card/card.component';
+import { NgChartsModule } from 'ng2-charts';
+import { AddcolisfromlistComponent } from './addcolisfromlist/addcolisfromlist.component';
 
 
 
@@ -57,7 +66,6 @@ import { NavbarclientComponent } from './navbarclient/navbarclient.component';
     DashbordComponent,
     AddcolieComponent,
     AreaComponent,
-    CardComponent,
     ListtransporteurComponent,
     UserheaderComponent,
     UpdatecollieComponent,
@@ -65,6 +73,13 @@ import { NavbarclientComponent } from './navbarclient/navbarclient.component';
     ClientComponent,
     SidenavclientComponent,
     NavbarclientComponent,
+    UsercommandComponent,
+    ChartComponent,
+    MaptrackingComponent,
+    ListcommandclientComponent,
+    CardComponent,
+    AddcolisfromlistComponent
+   
     
   ],
   imports: [
@@ -88,8 +103,11 @@ import { NavbarclientComponent } from './navbarclient/navbarclient.component';
     MatListModule,
     HighchartsChartModule,
     FlexLayoutModule,
-    MatCardModule
-    
+    MatCardModule,
+    ChartModule,
+    GoogleMapsModule,
+    NgxPaginationModule,
+    NgChartsModule
    
    
   ],

@@ -37,6 +37,10 @@ h2 {
   button:hover {
     background-color: #0069d9;
   }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
   
  
 

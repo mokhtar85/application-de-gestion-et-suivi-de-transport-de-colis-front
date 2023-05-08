@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
 export class AdminComponent implements OnInit {
   public showList=false
   constructor(private router: Router) {}
+  showHideSidenav:boolean=true;
+
   ngOnInit(): void {
       
   }
- public showListClient(showList:boolean):void{
-    this.showList=showList;
+
+  onshowSidenavChange(showHideSidenav:boolean){
+    this.showHideSidenav=showHideSidenav;
   }
-  
 }

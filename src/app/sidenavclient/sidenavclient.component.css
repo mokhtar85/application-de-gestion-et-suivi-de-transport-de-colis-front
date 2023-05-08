@@ -1,10 +1,11 @@
 .sidebar {
   height: 100%;
   padding-top: 20px;
+  background-color: #007bff;
 }
 
 .nav-pills .nav-link {
-  color: #555;
+  color: black;
   font-size: 16px;
   font-weight: 500;
   padding: 12px 20px;
@@ -19,8 +20,8 @@
 
 .nav-pills .nav-link:focus, .nav-pills .nav-link:hover {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: grey;
+  border-color: white;
 }
 
 .nav-pills .nav-link i {
@@ -31,5 +32,5 @@
   margin-bottom: 10px;
 }
 .welcome-section{
-  background-color: aqua;
+  background-color: #007bff;
 }

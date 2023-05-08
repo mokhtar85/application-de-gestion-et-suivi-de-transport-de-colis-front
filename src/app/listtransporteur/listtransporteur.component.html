@@ -1,13 +1,20 @@
+<p>
+  <mat-toolbar color="primary">
+   
+    <span>Transporters Application List</span>
+    <span class="example-spacer"></span>
+    <button  class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#addModal">Add Transporter</button>
+  </mat-toolbar>
+</p>
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
- 
-    <h2  style="margin-top: 30px;" >list of the Transporteurs</h2>
-  
-<table class="table">
+
+  <table class="table mt-8">
     <thead>
       <tr>
         <th scope="col">id</th>
         <th scope="col">Firstname</th>
         <th scope="col">Lastname</th>
+        <th scope="col">userName</th>
         <th scope="col">phone</th>
         <th scope="col">ville</th>
         <th scope="col">adress</th>
@@ -15,32 +22,123 @@
         <th scope="col">nImmatricualtion</th>
         <th scope="col">cin</th>
         <th scope="col">update</th>
-        <th scope="col">delete</th>        
+        <th scope="col">delete</th>
       </tr>
     </thead>
     <tbody>
-        <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
+      <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
         et acceder a ces attribut par user.name ou user.phone -->
-      <tr *ngFor="let ts of tabtransporteur.slice(0, visibleRows)">
+      <tr *ngFor="let ts of tabtransporteur  | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
         <th scope="row">{{ts.id_user}}</th>
         <td>{{ts.firstName}}</td>
         <td>{{ts.lastName}}</td>
+        <td>{{ts.userName}}</td>
         <td>{{ts.phone}}</td>
         <td>{{ts.city}}</td>
         <td>{{ts.adress}}</td>
         <td>{{ts.email}}</td>
         <td>{{ts.nImmatricualtion}}</td>
         <td>{{ts.cin}}</td>
-        <td><input type="button" value="update" (click)="updateTransporteur(ts.id_user)"></td>
-        <td><input type="button" value="delete" (click)="deleteTransporteur(ts.id_user)"></td>
+        <td><button   class="btn btn-info" data-bs-toggle="modal" data-bs-target="#updatemodal" (click)="getTransporter(ts)">update</button>
+        </td>
+        <td><input type="button" value="delete" class="btn btn-danger" (click)="deleteTransporteur(ts.id_user)"></td>
       </tr>
-    
+
     </tbody>
   </table>
-  <div style="display:flex; flex-direction:column; align-items:center;">
-  <button *ngIf="tabtransporteur.length > visibleRows" (click)="showMore()">Afficher plus</button>
-  <button *ngIf="previousVisibleRows !== visibleRows" (click)="showPrevious()">Revenir en arrière</button>
+  <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+</div>
+<!--Transporter modal add-->
+<div class="modal" tabindex="-1" id="addModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User management</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3" [formGroup]="inputform">
+          <div class="col-md-6">
+              <label for="Firstname" class="form-label">Firstname</label>
+              <input type="text" class="form-control" id="inputFirstname" formControlName="inputFirstname"  >
+              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputFirstname'].errors?.['required']">
+                  Firstname is required!
+                </div>
+          </div>
+            <div class="col-md-6">
+              <label for="Lastname" class="form-label">Lastname</label>
+              <input type="text" class="form-control" id="inputLastName" formControlName="inputLastName">
+              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputLastName'].errors?.['required']">
+                  Lastname is required
+                </div>
+          </div>
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" formControlName="inputEmail">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputEmail'].errors?.['required'] ">
+              mail is required!
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputEmail'].errors?.['email'] ">
+              please respect the syntaxe of an email!
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" formControlName="inputPassword">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPassword'].errors?.['required']">
+              please enter your password! </div>
+          </div>
+          <div class="col-md-6">
+              <label for="inputPassword5" class="form-label">Confirm password</label>
+              <input type="password" class="form-control" id="inputPassword5" formControlName="inputPassword2">
+              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPassword2'].errors?.['required']">
+                  please Confirm your password!
+              </div>  
+          </div>
+            <div class="col-md-6">
+              <label for="Username" class="form-label">Usrname</label>
+              <input type="text" class="form-control" id="inputUsername" formControlName="inputUsername">
+              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputUsername'].errors?.['required']">
+                  username is required!
+              </div>  
+          </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">phone number</label>
+              <input type="text" id="phone" name="phone" class="form-control" formControlName="inputphone">
+            </div>
+          <div class="col-md-6">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" formControlName="inputAddress">
+          </div>
+          <div class="col-12">
+            <label for="inputCity" class="form-label">city</label>
+            <input type="text" class="form-control" id="inputCity" formControlName="inputCity" >
+          </div>
+      <div class="col-md-6">
+              <label for="nImmatricualtion" class="form-label">nImmatricualtion</label>
+              <input type="text" class="form-control" id="inputnImmatricualtion" formControlName="inputnImmatricualtion">
+              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputnImmatricualtion'].errors?.['required']">
+                  nImmatricualtion is required!
+              </div>  
+          </div>
+          <div class="col-md-6">
+              <label for="Cin" class="form-label">Cin</label>
+              <input type="text" class="form-control" id="inputCin" formControlName="inputCin">
+              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputCin'].errors?.['required']">
+                  Cin is required!
+              </div>  
+          </div>
+       
+        </form>   
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addTransporterDetails()">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
-
-
+<!--Transporter modal update-->
+<div class="modal" tabindex="-1" id="updatemodal">
+<app-update-transporteur [currentTransporter]="currentTransporter" (closeModal)="closeModal($event)"></app-update-transporteur>
+</div>
