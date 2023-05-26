@@ -1,35 +1,35 @@
 nav {
-    display: flex;
-    justify-content: center; /* centre horizontalement */
-    align-items: center; /* centre verticalement */
-    background-color: #f5f5f5; /* couleur de fond */
-    height: 80px; /* hauteur de la navbar */
-  }
-  
-  .navbar-brand {
-    font-size: 24px; /* taille de police de la marque */
-    font-weight: bold; /* épaisseur de la police de la marque */
-    margin-right: 50px; /* marge à droite pour séparer la marque du reste de la navbar */
-  }
-  
-  .navbar-nav {
-    display: flex;
-    justify-content: center; /* centre les éléments horizontalement */
-    align-items: center; /* centre les éléments verticalement */
-  }
-  
-  .nav-item {
-    margin: 0 20px; /* marge à gauche et à droite pour séparer les éléments de la navbar */
-  }
-  
-  .nav-link {
-    color: #333; /* couleur de police des liens */
-    font-weight: bold; /* épaisseur de la police des liens */
-    text-transform: uppercase; /* transforme le texte en majuscules */
-    transition: color 0.3s ease; /* ajoute une transition fluide lorsqu'on survole les liens */
-  }
-  
-  .nav-link:hover {
-    color: #428bca; /* couleur de police des liens survolés */
-  }
-  
+  display: flex;
+  justify-content: center; /* centre horizontalement */
+  align-items: center; /* centre verticalement */
+  background-color: #f5f5f5; /* couleur de fond */
+  height: 80px; /* hauteur de la navbar */
+}
+
+.navbar-brand {
+  font-size: 24px; /* taille de police de la marque */
+  font-weight: bold; /* épaisseur de la police de la marque */
+  margin-right: 50px; /* marge à droite pour séparer la marque du reste de la navbar */
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: center; /* centre les éléments horizontalement */
+  align-items: center; /* centre les éléments verticalement */
+}
+
+.nav-item {
+  margin: 0 20px; /* marge à gauche et à droite pour séparer les éléments de la navbar */
+}
+
+.nav-link {
+  color: #333; /* couleur de police des liens */
+  font-weight: bold; /* épaisseur de la police des liens */
+  text-transform: uppercase; /* transforme le texte en majuscules */
+  transition: color 0.3s ease; /* ajoute une transition fluide lorsqu'on survole les liens */
+}
+
+.nav-link:hover {
+  background-color: blue; /* couleur de police des liens survolés */
+  color: #f5f5f5;
+}

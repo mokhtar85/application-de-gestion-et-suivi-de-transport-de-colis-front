@@ -9,15 +9,16 @@
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
   <h2 style="margin-top: 50px;">List of collies</h2>
 <table class="table">
-    <thead>
+    <thead> 
       <tr>
         <th scope="col">id_command</th>
-        <th scope="col">weight</th>
-        <th scope="col">type</th>
-        <th scope="col">size</th>
+        <th scope="col">adresseExpedition</th>
+        <th scope="col">adresseLivraison</th>
+        <th scope="col">taille</th>
         <th scope="col">date</th>
-        <th scope="col">city</th>
-        <th scope="col">price</th>
+        <th scope="col">Poid</th>
+        <th scope="col">numberProduct</th>
+        <th scope="col">remarques</th>
         <th scope="col">update</th>
         <th scope="col">delete</th>
             
@@ -28,12 +29,13 @@
             et acceder a ces attribut par user.name ou user.phone -->
           <tr *ngFor="let cm of tabCommand  | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
             <th scope="row">{{cm.idCmd}}</th>
-            <td>{{cm.weight}}</td>
-            <td>{{cm.type}}</td>
-            <td>{{cm.size}}</td>
+            <td>{{cm.adresseExpedition}}</td>
+            <td>{{cm.adresseLivraison}}</td>
+            <td>{{cm.taille}}</td>
             <td>{{cm.date}}</td>
-            <td>{{cm.city}}</td>
-            <td>{{cm.price}}</td>
+            <td>{{cm.poid}}</td>
+            <td>{{cm.numberProduct}}</td>
+            <td>{{cm.remarques}}</td>
             <td><button   class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal" (click)="getClient(cm)">
               update</button></td>
             <td><input type="button" value="delete" class="btn btn-danger" (click)="deleteCmd(cm.idCmd)"></td>
@@ -52,53 +54,58 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div style="text-align:center;">
-          <h2 style="color: blue;">update the collie here!</h2>
-          <form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;">
-            <div class="col-md-6">
-                <label for="wieght" class="form-label">wieght</label>
-                <input type="text" class="form-control" id="inputwieght" formControlName="inputwieght"  >
-                <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputwieght'].errors?.['required']">
-                  wieght is required!
-                  </div>
+      <div style="text-align:center;">
+    <form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;">
+      <div class="col-md-6">
+          <label for="wieght" class="form-label">adresseExpedition</label>
+          <input type="text" class="form-control" id="inputadresseExpedition" formControlName="inputadresseExpedition"  >
+          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputadresseExpedition'].errors?.['required']">
+            l'adresse d'éxpedition est un champs obliagatoire
             </div>
-              <div class="col-md-6">
-                <label for="type" class="form-label">Type of collie</label>
-                <input type="text" class="form-control" id="inputtype" formControlName="inputtype">
-                <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputtype'].errors?.['required']">
-                    type is required
-                  </div>
+      </div>
+        <div class="col-md-6">
+          <label for="type" class="form-label">adresseLivraison</label>
+          <input type="text" class="form-control" id="inputadresseLivraison" formControlName="inputadresseLivraison">
+          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputadresseLivraison'].errors?.['required']">
+            l'adresse de livraison est un champs obligatoire
             </div>
-            <div class="col-md-6">
-              <label for="size" class="form-label">Size</label>
-              <input type="text" class="form-control" id="inputSize" formControlName="inputSize">
-              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputSize'].errors?.['required'] ">
-                size is required!
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label for="inputDate" class="form-label">Date</label>
-              <input type="text" class="form-control" id="inputDate" formControlName="inputDate">
-              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputDate'].errors?.['required']">
-                please enter the Date! </div>
-            </div>
-            <div class="col-md-6">
-                <label for="inputCity" class="form-label">Confirm city</label>
-                <input type="text" class="form-control" id="inputCity" formControlName="inputCity">
-                <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputCity'].errors?.['required']">
-                    please Confirm your city!
-                </div>  
-            </div>
-              <div class="col-md-6">
-                <label for="price" class="form-label">price</label>
-                <input type="text" class="form-control" id="inputPrice" formControlName="inputPrice">
-                <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPrice'].errors?.['required']">
-                    price is required!
-                </div>  
-            </div>
-          </form>
+      </div>
+      <div class="col-md-6">
+        <label for="size" class="form-label">taille</label>
+        <input type="text" class="form-control" id="inputtaille" formControlName="inputtaille">
+        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputtaille'].errors?.['required'] ">
+          la taille est un champs obligatoire
         </div>
       </div>
+      <div class="col-md-6">
+        <label for="inputDate" class="form-label">Date</label>
+        <input type="text" class="form-control" id="inputDate" formControlName="inputDate">
+        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputDate'].errors?.['required']">
+          la date est un champs obligatoire </div>
+      </div>
+      <div class="col-md-6">
+          <label for="inputCity" class="form-label">Poid</label>
+          <input type="text" class="form-control" id="inputPoid" formControlName="inputPoid">
+          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPoid'].errors?.['required']">
+          le Poid est un champs obligatoire
+          </div>  
+      </div>
+        <div class="col-md-6">
+          <label for="price" class="form-label">numberProduct</label>
+          <input type="text" class="form-control" id="inputnumberProduct" formControlName="inputnumberProduct">
+          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputnumberProduct'].errors?.['required']">
+            nombre de produit est un champs obligatoire
+          </div>  
+      </div>
+    
+    <div class="col-md-6">
+      <label for="price" class="form-label">remarques</label>
+      <input type="text" class="form-control" id="inputremarques" formControlName="inputremarques"> 
+  </div>
+   
+    </form>
+  </div>
+</div>
       <div class="modal-footer">
         <button type="button" id="cancel"  data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" (click)="addcollie()">Save changes</button>

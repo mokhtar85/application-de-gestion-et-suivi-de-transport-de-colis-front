@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Command } from '../models/Command.models';
@@ -8,12 +8,14 @@ import { Command } from '../models/Command.models';
 })
 export class CommandService {
   readonly API_URL="http://localhost:8084"
-  readonly getAllCommand="/getAllCommands"
+  readonly getAllCommand="/getAllColis"
   readonly addColli="/addCommand"
   readonly getCollieById="/getCmdById"
   readonly updateCmd="/updateCommand"
   readonly deleteCommand="/deleteCmd"
   readonly getnumbercommand="/numbercommands"
+  readonly getColsiByClientAuth="/api/v1/auth/getColisByClient"
+  readonly addcolis="/api/v1/auth/soumettreColis"
   constructor(private http: HttpClient) { }
   getAllCommands():Observable<Command[]>
   {
@@ -37,5 +39,17 @@ export class CommandService {
   {
    return this.http.get<number>(this.API_URL+this.getnumbercommand)
   }
+  getColisWithAuthClient():Observable<Command[]>
+  {
+   return this.http.get<Command[]>(this.API_URL+this.getColsiByClientAuth)
+  }
+  addColis(cmd:Command):Observable<Command> 
+  {
+    
+   
+     
+   return this.http.post<Command>(this.API_URL+this.addcolis,cmd)
+  }
+
 
 }

@@ -1,38 +1,17 @@
-
 <mat-toolbar class="color" color="primary" [ngClass]="{'full-width': !isNavbarClicked}">
     <a data-toggle="collapse" (click)="afficherSidebarClient()"><i class="fa fa-bars" aria-hidden="true"></i></a> 
-    <mat-toolbar-row>
-       
-
-        <span> Transport company  </span>
-
-        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
-            <ul fxLayout="row" fxLayoutGap="20px">
-                <li>
-                    <button mat-icon-button>
-                        <mat-icon>settings</mat-icon>
-                    </button>
-                </li>
-                <li>
-                    <button mat-icon-button>
-                        <mat-icon>help_outline</mat-icon>
-                    </button>
-                </li>
-                <li>
-                    <button mat-button [matMenuTriggerFor]="menu">
-                        <mat-icon>person_outline</mat-icon>
-                    </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
-                            <mat-icon>exit_to_app</mat-icon>
-                            Sign out
-                        </button>
-                    </mat-menu>
-
-                </li>
-            </ul>
-        </div>
-    </mat-toolbar-row>
-</mat-toolbar>
-  
- 
+<nav class="navbar navbar-expand-lg navbar-dark color">
+    <a class="navbar-brand" >Transport company</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()" >Sign Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  </mat-toolbar>

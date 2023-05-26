@@ -106,13 +106,7 @@ export class ListuserComponent implements OnInit {
   
    
 
-    showMore() {
-      this.previousVisibleRows = this.visibleRows; // enregistrer l'état précédent de visibleRows
-      this.visibleRows += 10; // charger 10 entrées supplémentaires
-    }
-    showPrevious() {
-      this.visibleRows = this.previousVisibleRows; // rétablir l'état précédent de visibleRows
-    } 
+    
     
     public getClient(client : Client){
       console.log(client);

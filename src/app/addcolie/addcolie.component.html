@@ -1,49 +1,134 @@
-<div style="text-align:center;">
-    <h2 class="titre" style="color: blue;">Please add your collie!</h2>
-    <form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;">
-      <div class="col-md-6">
-          <label for="wieght" class="form-label">wieght</label>
-          <input type="text" class="form-control" id="inputwieght" formControlName="inputwieght"  >
-          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputwieght'].errors?.['required']">
-            wieght is required!
+<form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;" (ngSubmit)="save()">
+  <div class="card" style="width: 1200px;">
+    <h3>add your colis with their products</h3> 
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label>Adresse d'expédition</label>
+            <span class="text-danger">*</span>
+            <input formControlName="adresseExpedition" class="form-control" />
+            <div class="alert alert-danger" role="alert"
+              *ngIf="!inputform.pristine && inputform.controls['adresseExpedition'].errors?.['required']">
+              Adresse d'expédition est obligatoire!
             </div>
-      </div>
-        <div class="col-md-6">
-          <label for="type" class="form-label">Type of collie</label>
-          <input type="text" class="form-control" id="inputtype" formControlName="inputtype">
-          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputtype'].errors?.['required']">
-              type is required
+          </div>
+
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label>Adresse de livraison</label>
+            <span class="text-danger">*</span>
+            <input formControlName="adresseLivraison" class="form-control" />
+            <div class="alert alert-danger" role="alert"
+              *ngIf="!inputform.pristine && inputform.controls['adresseLivraison'].errors?.['required']">
+              Adresse de livraison est obligatoire!
             </div>
-      </div>
-      <div class="col-md-6">
-        <label for="size" class="form-label">Size</label>
-        <input type="text" class="form-control" id="inputSize" formControlName="inputSize">
-        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputSize'].errors?.['required'] ">
-          size is required!
+          </div>
+
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label>poid estimé du colis</label>
+            <span class="text-danger">*</span>
+            <input formControlName="poid" class="form-control" />
+            <div class="alert alert-danger" role="alert"
+              *ngIf="!inputform.pristine && inputform.controls['poid'].errors?.['required']">
+              poid estimé du colis est obligatoire!
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label>taille</label>
+            <span class="text-danger">*</span>
+            <input formControlName="taille" class="form-control" />
+            <div class="alert alert-danger" role="alert"
+              *ngIf="!inputform.pristine && inputform.controls['taille'].errors?.['required']">
+              taille colis est obligatoire!
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label>date d'éxpedition</label>
+            <span class="text-danger">*</span>
+            <input type="date" id="dateExpedition" name="dateExpedition" formControlName="date"
+              class="form-control" />
+            <div class="alert alert-danger" role="alert"
+              *ngIf="!inputform.pristine && inputform.controls['date'].errors?.['required']">
+              date d'éxpedition est obligatoire!
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label>Nombre des produits</label>
+            <span class="text-danger">*</span>
+            <input formControlName="numberProduct" class="form-control" />
+            <div class="alert alert-danger" role="alert"
+              *ngIf="!inputform.pristine && inputform.controls['numberProduct'].errors?.['required']">
+              date d'éxpedition est obligatoire!
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label>Remarques</label>
+            <span class="text-danger"></span>
+            <input formControlName="remarques" class="form-control" />
+          </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <label for="inputDate" class="form-label">Date</label>
-        <input type="text" class="form-control" id="inputDate" formControlName="inputDate">
-        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputDate'].errors?.['required']">
-          please enter the Date! </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <table class="table table-bordered" formArrayName="produits">
+          <thead class="bg-primary text-white">
+            <tr>
+              <td>No</td>
+              <td>Product name</td>
+              <td>product type</td>
+              <td>Quantity</td>
+              <td>Fragility</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of products.controls; let i=index" [formGroupName]="i">
+              <td>{{i+1}}</td>
+              <td>
+                <input class="form-control" formControlName="name"> 
+              </td>
+              <td>
+                <input class="form-control" formControlName="type"> 
+              </td>
+              <td>
+                <input class="form-control" formControlName="quantity"> 
+              </td>
+              <td>
+                <input class="form-control" formControlName="isFragil"> 
+              </td>
+              <td>
+                <a  class="btn btn-danger" (click)="removeProduct(i)">Remove</a>
+            </td>
+
+
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <a class="btn btn-success" (click)="addProduct()">[+]</a>
+              </td>
+            </tr>
+          </tfoot>
+
+        </table>
       </div>
-      <div class="col-md-6">
-          <label for="inputCity" class="form-label">Confirm city</label>
-          <input type="text" class="form-control" id="inputCity" formControlName="inputCity">
-          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputCity'].errors?.['required']">
-              please Confirm your city!
-          </div>  
-      </div>
-        <div class="col-md-6">
-          <label for="price" class="form-label">price</label>
-          <input type="text" class="form-control" id="inputPrice" formControlName="inputPrice">
-          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPrice'].errors?.['required']">
-              price is required!
-          </div>  
-      </div>
-    <div class="col-12">
-        <button type="submit" class="btn btn-primary" (click)="addcollie()">Submit</button>
-      </div>
-    </form>
-    </div> 
+    </div>
+    <div class="col-lg-12">
+      <button class="btn btn-success" type="submit" >Save changes</button>
+    </div>
+  </div>
+</form>

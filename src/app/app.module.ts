@@ -10,7 +10,7 @@ import { SigninComponent } from './signin/signin.component';
 import { ListuserComponent } from './listuser/listuser.component';
 import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { SignupComponent } from './signup/signup.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { AdminComponent } from './admin/admin.component';
 import {SidebarModule} from 'ng-cdbangular';
@@ -39,12 +39,13 @@ import { ChartModule } from 'angular2-chartjs';
 import 'chart.js';
 import { ChartComponent } from './chart/chart.component';
 import { MaptrackingComponent } from './maptracking/maptracking.component';
-import { GoogleMapsModule } from '@angular/google-maps';
+
 import { ListcommandclientComponent } from './listcommandclient/listcommandclient.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CardComponent } from './card/card.component';
 import { NgChartsModule } from 'ng2-charts';
 import { AddcolisfromlistComponent } from './addcolisfromlist/addcolisfromlist.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 
 
@@ -79,6 +80,7 @@ import { AddcolisfromlistComponent } from './addcolisfromlist/addcolisfromlist.c
     ListcommandclientComponent,
     CardComponent,
     AddcolisfromlistComponent
+ 
    
     
   ],
@@ -105,13 +107,16 @@ import { AddcolisfromlistComponent } from './addcolisfromlist/addcolisfromlist.c
     FlexLayoutModule,
     MatCardModule,
     ChartModule,
-    GoogleMapsModule,
     NgxPaginationModule,
     NgChartsModule
    
    
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

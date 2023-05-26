@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Client } from '../models/Client.models';
 import { Router } from '@angular/router';
+import { AuthenticationResponse } from '../models/AuthenticationResponse.models';
 
 @Component({
   selector: 'app-signup',
@@ -19,14 +20,37 @@ export class SignupComponent implements OnInit {
         {"inputFirstname":["",Validators.required],
          "inputLastName":["",Validators.required],
         "inputEmail":["",[Validators.required,Validators.email]],
-        "inputPassword":["",Validators.required],
-        "inputPassword2":["",Validators.required],
          "inputUsername":["",Validators.required],
-         "inputphone":[""],
-         "inputAddress":[],
-         "inputCity":[]
+         "inputphone":["",Validators.required],
+         "inputAddress":["",Validators.required],
+         "inputCity":["",Validators.required],
+         "inputPassword":["", [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d).*$/)
+        ]],
+        "inputPassword2":["",Validators.required]
+        },
+        {
+          validators : this.Mustmatch('inputPassword','inputPassword2')
         }
+        
       )
+  }
+  Mustmatch(controlName: string, matchingControlName:string){
+  return( fGroup:FormGroup ) =>{
+    const control = fGroup.controls[controlName]
+    const matchingControl = fGroup.controls[matchingControlName]
+    if(matchingControl.errors && !matchingControl.errors['Mustmatch']){
+      return 
+    }
+    if(control.value !== matchingControl.value){
+      matchingControl.setErrors({ Mustmatch: true });
+    }
+    else{
+      matchingControl.setErrors(null)
+    }
+  }
   }
   addclient(){
     let clt = new Client();
@@ -40,8 +64,13 @@ export class SignupComponent implements OnInit {
     clt.adress=this.inputform.controls['inputAddress'].value
     clt.city=this.inputform.controls['inputCity'].value
     this.userserv.addclient(clt).subscribe(
-      (clnt)=>{
-        console.log(clt.firstName)
+      (response: AuthenticationResponse) => {
+        console.log('Token:', response.token, "client: ", response.client);
+        // Additional logic or display of the token as needed
+      },
+      (error) => {
+        console.error('Error:', error);
+        // Handle error response if needed
       }
     )
     this.router.navigate(["/signin"])

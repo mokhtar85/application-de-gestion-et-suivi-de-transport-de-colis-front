@@ -1,3 +1,5 @@
+import { Typerole } from "./typerole";
+
 export class Client {
      id_user!:number;
 	 userName!:string;
@@ -9,4 +11,5 @@ export class Client {
 	 password!:string;
 	 confirmPassword!:string;
 	 email!:string;
+	 role!: Typerole;
 }

@@ -1,9 +1,14 @@
-<div style="text-align:center;">
-  <h2 style="color: blue;">Sign up here!</h2>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card custom-card">
+        <div style="text-align: center;">
+          <h2>Sign up</h2>
+        </div>
   <form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;" >
     <div class="col-md-6">
         <label for="Firstname" class="form-label">Firstname</label>
-        <input type="text" class="form-control" id="inputFirstname" formControlName="inputFirstname"  >
+        <input type="text" class="form-control" id="inputFirstname" name="inputFirstname" formControlName="inputFirstname"  >
         <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputFirstname'].errors?.['required']">
             Firstname is required!
           </div>
@@ -17,7 +22,7 @@
     </div>
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" formControlName="inputEmail">
+      <input type="email" class="form-control" id="inputEmail4" name="inputEmail" formControlName="inputEmail">
       <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputEmail'].errors?.['required'] ">
         mail is required!
       </div>
@@ -27,16 +32,27 @@
     </div>
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" formControlName="inputPassword">
+      <input type="password" class="form-control" id="inputPassword4" name="inputPassword" formControlName="inputPassword">
       <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPassword'].errors?.['required']">
         please enter your password! </div>
+    
+    <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['inputPassword'].errors?.['minlength']">
+      Password must be at least 6 characters long.
     </div>
+  
+    <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['inputPassword'].errors?.['pattern']">
+      Password must contain at least one letter and one number.
+    </div>
+  </div>
     <div class="col-md-6">
         <label for="inputPassword5" class="form-label">Confirm password</label>
-        <input type="password" class="form-control" id="inputPassword5" formControlName="inputPassword2">
+        <input type="password" class="form-control" name="inputPassword2" id="inputPassword5" formControlName="inputPassword2">
         <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPassword2'].errors?.['required']">
             please Confirm your password!
         </div>  
+        <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['inputPassword2'].errors?.['Mustmatch']">
+          Password and confirm password are not matched.
+        </div>
     </div>
       <div class="col-md-6">
         <label for="Username" class="form-label">Usrname</label>
@@ -47,7 +63,7 @@
     </div>
     <div class="col-md-6">
       <label for="phone" class="form-label">phone number</label>
-      <input type="text" id="phone" name="phone" class="form-control" formControlName="inputphone">
+      <input type="text" id="phone" name="inputphone" class="form-control" formControlName="inputphone">
     </div>
   <div class="col-md-6">
     <label for="inputAddress" class="form-label">Address</label>
@@ -57,8 +73,16 @@
     <label for="inputCity" class="form-label">city</label>
     <input type="text" class="form-control" id="inputCity" formControlName="inputCity" >
   </div>
-  <div class="col-12">
-      <button type="submit" class="btn btn-primary" (click)="addclient  ()">Sign up</button>
-    </div>
+ 
+  <div class="col-md-6">
+    <button type="submit" class="btn btn-primary" (click)="addclient()">Sign Up</button>
+  </div>
+
+  <div class="col-md-6">
+    <p style="margin-top: 8px;">You already have an account <a href="signin">Sign In</a></p>
+  </div>
   </form>
-  </div> 
+ </div>
+  </div>
+ </div>
+ </div>

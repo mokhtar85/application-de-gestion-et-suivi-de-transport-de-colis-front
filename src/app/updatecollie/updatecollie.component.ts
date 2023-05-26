@@ -24,11 +24,11 @@ export class UpdatecollieComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.inputform = this.fb.group(
       {
-        "inputwieght": ["", Validators.required],
-        "inputtype": ["", Validators.required],
-        "inputSize": ["", Validators.required],
-        "inputCity": ["", Validators.required],
-        "inputPrice": ["", Validators.required],
+        "inputadresseExpedition": ["", Validators.required],
+        "inputadresseLivraison": ["", Validators.required],
+        "inputtaille": ["", Validators.required],
+        "inputPoid": ["", Validators.required],
+        "inputnumberProduct": ["", Validators.required],
         "inputDate": ["", Validators.required]
       }
     )
@@ -37,19 +37,17 @@ export class UpdatecollieComponent implements OnInit, OnChanges {
   }
   updateCollie() {
     let cl = new Command();
-    cl.weight = this.inputform.controls['inputwieght'].value
-    cl.type = this.inputform.controls['inputtype'].value
-    cl.size = this.inputform.controls['inputSize'].value
+    cl.adresseExpedition = this.inputform.controls['inputadresseExpedition'].value
+    cl.adresseLivraison = this.inputform.controls['inputadresseLivraison'].value
+    cl.numberProduct = this.inputform.controls['inputnumberProduct'].value
     cl.date = this.inputform.controls['inputDate'].value
-    cl.city = this.inputform.controls['inputCity'].value
-    cl.price = this.inputform.controls['inputPrice'].value
+    cl.remarques = this.inputform.controls['inputremarques'].value
+    cl.taille = this.inputform.controls['inputtaille'].value
     this.commandserv.updateCommand(this.currentColis.idCmd, cl).subscribe(
       (altuser) => {
-        console.log(cl.city)
         this.closeModal.emit(true);
         let ref = document.getElementById('cancel')
         ref?.click();
-        console.log("********")
       }
     )
 
@@ -59,13 +57,12 @@ export class UpdatecollieComponent implements OnInit, OnChanges {
     const collieId = this.currentColis?.idCmd
     this.commandserv.getColliById(collieId).subscribe(
       (cmd) => {
-        console.log(cmd.weight)
-        this.inputform.controls['inputwieght'].setValue(cmd.weight)
-        this.inputform.controls['inputtype'].setValue(cmd.type)
-        this.inputform.controls['inputSize'].setValue(cmd.size)
+        this.inputform.controls['inputadresseExpedition'].setValue(cmd.adresseExpedition)
+        this.inputform.controls['inputadresseLivraison'].setValue(cmd.adresseLivraison)
+        this.inputform.controls['inputnumberProduct'].setValue(cmd.numberProduct)
         this.inputform.controls['inputDate'].setValue(cmd.date)
-        this.inputform.controls['inputCity'].setValue(cmd.city)
-        this.inputform.controls['inputPrice'].setValue(cmd.price)
+        this.inputform.controls['inputremarques'].setValue(cmd.remarques)
+        this.inputform.controls['inputtaille'].setValue(cmd.taille)
 
 
       }

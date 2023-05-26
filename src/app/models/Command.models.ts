@@ -1,9 +1,13 @@
+import { Product } from "./Product.models";
+
 export class Command{
-    idCmd!:number;
-     weight!:string;
-   type!:string;
-     size!:string;
-    date!:string;
-     city!:string;
-    price!:string;
+  idCmd!:number;
+  adresseExpedition!:string;
+  adresseLivraison!:string;
+  taille!:string;
+  poid!:string;
+  date!:Date;
+  numberProduct!:number;
+  remarques!:string;
+  produits!: Product[];
 }

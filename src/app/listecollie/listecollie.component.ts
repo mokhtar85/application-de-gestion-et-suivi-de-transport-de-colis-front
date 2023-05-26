@@ -31,12 +31,12 @@ export class ListecollieComponent implements OnInit{
     window.dispatchEvent(new Event('resize'));
   }, 300); 
   this.inputform=this.fb.group(
-    {"inputwieght":["",Validators.required],
-    "inputtype":["",Validators.required],
-    "inputSize":["",Validators.required],
-    "inputCity":["",Validators.required],
-    "inputPrice":["",Validators.required],
-    "inputDate":["",Validators.required]
+    {"inputadresseExpedition": ["", Validators.required],
+    "inputadresseLivraison": ["", Validators.required],
+    "inputtaille": ["", Validators.required],
+    "inputPoid": ["", Validators.required],
+    "inputnumberProduct": ["", Validators.required],
+    "inputDate": ["", Validators.required]
   }
   )
   
@@ -54,12 +54,12 @@ deleteCmd(id:number){
 }
  addcollie(){
 
-    this.commandModelObj.weight=this.inputform.value.inputwieght
-    this.commandModelObj.type=this.inputform.value.inputtype
-    this.commandModelObj.size=this.inputform.value.inputSize
+    this.commandModelObj.adresseExpedition=this.inputform.value.inputadresseExpedition
+    this.commandModelObj.adresseLivraison=this.inputform.value.inputadresseLivraison
+    this.commandModelObj.numberProduct=this.inputform.value.inputnumberProduct
     this.commandModelObj.date=this.inputform.value.inputDate
-    this.commandModelObj.city=this.inputform.value.inputCity
-    this.commandModelObj.price=this.inputform.value.inputPrice
+    this.commandModelObj.taille=this.inputform.value.inputtaille
+    this.commandModelObj.remarques=this.inputform.value.inputremarques
     
     this.commandserv.addcolli(this.commandModelObj).subscribe(
       (res)=>{
