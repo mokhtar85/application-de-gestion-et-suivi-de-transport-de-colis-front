@@ -5,6 +5,8 @@ import { AuthenticationResponse } from '../models/AuthenticationResponse.models'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { Client } from '../models/Client.models';
+import { Product } from '../models/Product.models';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-listcommandclient',
@@ -13,9 +15,12 @@ import { Client } from '../models/Client.models';
 })
 export class ListcommandclientComponent implements OnInit {
 tabCollis:Command[]=[]
+tabProducts:Product[]=[]
 client!:Client
 authresponse!:AuthenticationResponse;
-constructor(private commandServ:CommandService,private http: HttpClient,private clientServ: UserService){
+currentPage = 1;
+itemsPerPage = 5;
+constructor(private commandServ:CommandService,private http: HttpClient,private clientServ: UserService,private productService:ProductService){
 
 }
 ngOnInit(): void {
@@ -40,8 +45,14 @@ ngOnInit(): void {
           }
         )
   }
-   
+  getAllProductsByColisId(colisId: number): void {
+    this.productService.getAllProductsByColisId(colisId)
+      .subscribe(
+        (products: Product[]) => {
+          this.tabProducts = products;
+        }
+      );
 
 }
 
-
+}

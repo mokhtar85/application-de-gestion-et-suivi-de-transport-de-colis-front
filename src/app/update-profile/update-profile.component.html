@@ -1,0 +1,87 @@
+<form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;" (ngSubmit)="updateclient()">
+    <div class="card" style="width: 1200px;">
+      <h3>modifiez vos informations de profils</h3> 
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>firstname</label>
+              <span class="text-danger">*</span>
+              <input formControlName="firstName" class="form-control" />
+            </div>
+  
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>lastname</label>
+              <span class="text-danger">*</span>
+              <input formControlName="lastName" class="form-control" />
+            </div>
+  
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>username</label>
+              <span class="text-danger">*</span>
+              <input formControlName="userName" class="form-control" />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>Adresse</label>
+              <span class="text-danger">*</span>
+              <input formControlName="adress" class="form-control" />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>city</label>
+              <span class="text-danger">*</span>
+              <input id="dateExpedition" name="dateExpedition" formControlName="city"
+                class="form-control" />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>phone</label>
+              <span class="text-danger">*</span>
+              <input formControlName="phone" class="form-control" />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>New Password</label>
+              <span class="text-danger"></span>
+              <input formControlName="password" class="form-control" />
+              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['password'].errors?.['required']">
+                please enter your password! </div>
+            
+            <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['password'].errors?.['minlength']">
+              Password must be at least 6 characters long.
+            </div>
+          
+            <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['password'].errors?.['pattern']">
+              Password must contain at least one letter and one number.
+            </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <span class="text-danger"></span>
+              <input formControlName="confirmPassword" class="form-control" />
+              <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['confirmPassword'].errors?.['required']">
+                please Confirm your password!
+            </div>  
+            <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['confirmPassword'].errors?.['Mustmatch']">
+              Password and confirm password are not matched.
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <button class="btn btn-success" type="submit" >Save changes</button>
+      </div>
+    </div>
+    </form>

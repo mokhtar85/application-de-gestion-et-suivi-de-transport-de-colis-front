@@ -24,6 +24,7 @@ import { UsercommandComponent } from './usercommand/usercommand.component';
 import { ChartComponent } from './chart/chart.component';
 import { MaptrackingComponent } from './maptracking/maptracking.component';
 import { ListcommandclientComponent } from './listcommandclient/listcommandclient.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 const routes: Routes = [
   {path: "", component:HomeComponent},
   {path: "", component:HeaderComponent},
@@ -85,9 +86,11 @@ const routes: Routes = [
         },
         {path: "addcollie", component:AddcolieComponent},
         {path: "listcommandclient", component:ListcommandclientComponent},
-        {path: "maptracking", component:MaptrackingComponent}
+        {path: "maptracking", component:MaptrackingComponent},
+        {path: "maptracking", component:MaptrackingComponent},
+        {path: "updateprofile", component:UpdateProfileComponent}
 
-      ]
+      ]  
     }
     
     

@@ -20,11 +20,19 @@ ngOnInit(): void {
     
 }
 loginUser(){
-  this.userservice.loginUsr(this.client).subscribe(
+  this.userservice.loginUser(this.client).subscribe(
     (response: AuthenticationResponse) => {
       console.log('Token:', response.token, "client: ", response.client);
+      console.log('Token:', response.token, "admin: ", response.admin);
+      if(response.client != null){
       this.userservice.saveClient(response.client,response.token);
-      this.route.navigate(['/client/addcollie'])
+      this.route.navigate(['/client/addcollie'])}
+      else if(response.admin != null){
+        this.userservice.saveAdmin(response.admin,response.token);
+        this.route.navigate(['/admin/dashbord'])
+      }
+      
+     
       // Additional logic or display of the token as needed
     },
     (error) => {

@@ -8,12 +8,12 @@ import { Command } from '../models/Command.models';
 })
 export class CommandService {
   readonly API_URL="http://localhost:8084"
-  readonly getAllCommand="/getAllColis"
-  readonly addColli="/addCommand"
-  readonly getCollieById="/getCmdById"
-  readonly updateCmd="/updateCommand"
-  readonly deleteCommand="/deleteCmd"
-  readonly getnumbercommand="/numbercommands"
+  readonly getAllCommand="/api/v1/auth/getAllColis"
+  readonly addColli="/api/v1/auth/addCommand"
+  readonly getCollieById="/api/v1/auth/getCmdById"
+  readonly updateCmd="/api/v1/auth/updateCommand"
+  readonly deleteCommand="/api/v1/auth/deleteCmd"
+  readonly getnumbercommand="/api/v1/auth/numbercommands"
   readonly getColsiByClientAuth="/api/v1/auth/getColisByClient"
   readonly addcolis="/api/v1/auth/soumettreColis"
   constructor(private http: HttpClient) { }
@@ -45,9 +45,7 @@ export class CommandService {
   }
   addColis(cmd:Command):Observable<Command> 
   {
-    
-   
-     
+
    return this.http.post<Command>(this.API_URL+this.addcolis,cmd)
   }
 

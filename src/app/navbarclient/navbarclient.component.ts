@@ -27,5 +27,6 @@ afficherSidebarClient(){
     }
     logout(){
       this.userservice.logout();
+      window.location.href = '/signin';
     }
   }

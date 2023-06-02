@@ -10,13 +10,14 @@
           <th scope="col">date</th>
           <th scope="col">taille</th>
           <th scope="col">nombre des produits</th>
+          <th scope="col">Consulter produits</th>
               
         </tr>
       </thead>
       <tbody>
         <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
         et acceder a ces attribut par user.name ou user.phone -->
-      <tr *ngFor="let cm of tabCollis " >
+      <tr *ngFor="let cm of tabCollis  | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" >
         <th scope="row">{{cm.idCmd}}</th>
             <td>{{cm.adresseExpedition}}</td>
             <td>{{cm.adresseLivraison}}</td>
@@ -24,8 +25,53 @@
             <td>{{cm.date}}</td>
             <td>{{cm.taille}}</td>
             <td>{{cm.numberProduct}}</td>
+            <td><button   class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ProductModal" (click)="getAllProductsByColisId(cm.idCmd)">consulter produit</button></td>
       </tr>
     
     </tbody>
 </table>
+<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+</div>
+<div class="modal" tabindex="-1" id="ProductModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">list of products</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+          <h2 style="margin-top: 50px;">List of your products</h2>
+          <table class="table">
+              <thead>
+                <tr >
+                  <th scope="col">is_fragil</th>
+                  <th scope="col">name</th>
+                  <th scope="col">quantity</th>
+                  <th scope="col">type</th>
+                
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
+                et acceder a ces attribut par user.name ou user.phone -->
+              <tr *ngFor="let product of tabProducts">
+                
+                <td>{{ product.isFragil }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.type }}</td>
+                
+              </tr>
+            
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" >Save changes</button>
+    </div>
+    </div>
+    </div>
 </div>

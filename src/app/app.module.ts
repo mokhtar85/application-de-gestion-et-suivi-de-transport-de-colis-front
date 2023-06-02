@@ -46,6 +46,8 @@ import { CardComponent } from './card/card.component';
 import { NgChartsModule } from 'ng2-charts';
 import { AddcolisfromlistComponent } from './addcolisfromlist/addcolisfromlist.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { ListproductComponent } from './listproduct/listproduct.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 
 
@@ -79,7 +81,9 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     MaptrackingComponent,
     ListcommandclientComponent,
     CardComponent,
-    AddcolisfromlistComponent
+    AddcolisfromlistComponent,
+    ListproductComponent,
+    UpdateProfileComponent
  
    
     
