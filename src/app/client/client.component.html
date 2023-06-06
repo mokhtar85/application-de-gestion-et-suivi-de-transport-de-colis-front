@@ -9,12 +9,11 @@
   </div>
 </div>-->
 <div class="row1 body">
-<div class="col-lg-2" *ngIf="showHideSidenav">
-<app-sidenavclient></app-sidenavclient>
-</div>
-<div class="col-lg-10" style="width: 100%">
-  <app-navbarclient [showSidenav]="showHideSidenav" (showSidenavChange)="onshowSidenavChange($event)"></app-navbarclient>
-  <router-outlet></router-outlet>
- </div>
- 
+  <div class="col-lg-2 app-sidenav" *ngIf="showHideSidenav">
+    <app-sidenavclient></app-sidenavclient>
+  </div>
+  <div class="col-lg-10 app-main-content" style="width: 100%; overflow-x: auto">
+    <app-navbarclient [showSidenav]="showHideSidenav" (showSidenavChange)="onshowSidenavChange($event)"></app-navbarclient>
+    <router-outlet></router-outlet>
+  </div>
 </div>

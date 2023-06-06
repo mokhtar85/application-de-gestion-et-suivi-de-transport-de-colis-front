@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommandService } from '../services/command.service';
 import { identity } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Transporteur } from '../models/Transporteur.models';
+import { TransporteurService } from '../services/transporteur.service';
 
 @Component({
   selector: 'app-listecollie',
@@ -11,6 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./listecollie.component.css']
 })
 export class ListecollieComponent implements OnInit{
+  tabtransporteur:Transporteur[]=[];
   currentColis!:Command;
   public showModal=false;
   inputform!: FormGroup
@@ -19,7 +22,9 @@ export class ListecollieComponent implements OnInit{
   itemsPerPage = 5;
   tabCommand:Command[]=[];
   commandModelObj:Command= new Command();
-  constructor(private fb:FormBuilder, private router:Router,private commandserv:CommandService,private actRoute:ActivatedRoute){}
+  selectedColisId!: number;
+  selectedTransporteurId!: number;
+  constructor(private fb:FormBuilder, private router:Router,private commandserv:CommandService,private actRoute:ActivatedRoute,private transpServ:TransporteurService){}
   ngOnInit(): void {
   this.commandserv.getAllCommands().subscribe(
     (tabu)=>{
@@ -92,5 +97,30 @@ deleteCmd(id:number){
    
       this.showModal=true;
       this.currentColis=cmd;
+      this.selectedColisId = cmd.idCmd;
+
+    }
+    selectTransporteur(transporteur: Transporteur) {
+      this.selectedTransporteurId = transporteur.id_user;
+    }
+    getAllTransporters(){
+      this.transpServ.getAllTransporters().subscribe(res=>{
+        this.tabtransporteur=res;
+        console.log("clientData: ", this.tabtransporteur);
+      })
+    
+    }
+    AffecteColisToTransporter(){
+      this.commandserv.AffectColisToTransporteur(this.selectedColisId,this.selectedTransporteurId).subscribe(
+        (affectationColis) => {
+          // Traitez la réponse de l'appel HTTP si nécessaire
+          console.log("afffetctaion a:" +this.selectedTransporteurId+this.selectedColisId+" "+affectationColis);
+          console.log("*******");
+        },
+        (error) => {
+          // Gérez les erreurs de l'appel HTTP
+          console.log(error);
+        }
+      )
     }
 }

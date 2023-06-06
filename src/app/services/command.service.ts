@@ -2,6 +2,7 @@ import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Command } from '../models/Command.models';
+import { AffectationColis } from '../models/AffectationColis.models';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class CommandService {
   readonly getnumbercommand="/api/v1/auth/numbercommands"
   readonly getColsiByClientAuth="/api/v1/auth/getColisByClient"
   readonly addcolis="/api/v1/auth/soumettreColis"
+  readonly getAffectedColis="/api/v1/auth/getColisAffecter"
+  readonly accepteColis="/api/v1/auth/accepter"
+  readonly getAcceptedColis="/api/v1/auth/getColsiAcceptes"
+  readonly deleteColisAffect="/api/v1/auth/colis"
   constructor(private http: HttpClient) { }
   getAllCommands():Observable<Command[]>
   {
@@ -48,6 +53,25 @@ export class CommandService {
 
    return this.http.post<Command>(this.API_URL+this.addcolis,cmd)
   }
+  getAffectedColisToTransporteur():Observable<Command[]>
+  {
+   return this.http.get<Command[]>(this.API_URL+this.getAffectedColis)
+  }
+  AffectColisToTransporteur(idColis: number,idTransporteur: number ): Observable<AffectationColis> {
+    const url = `${this.API_URL}/api/v1/auth/colis/${idColis}/transporteur/${idTransporteur}`;
+    return this.http.post<AffectationColis>(url, null);
+  }
+  accepterColi(id:number):Observable<Command> 
+  {
 
-
+   return this.http.post<Command>(this.API_URL+this.accepteColis+ "/" + id, null)
+  }
+  getColisAccepted():Observable<Command[]>
+  {
+   return this.http.get<Command[]>(this.API_URL+this.getAcceptedColis)
+  }
+  deleteColisAffected(idCmd: number):Observable<number> {
+    return this.http.delete<number>(this.API_URL+this.deleteColisAffect+"/"+idCmd)
+  }
+  
 }

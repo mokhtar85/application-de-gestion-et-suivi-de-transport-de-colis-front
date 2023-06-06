@@ -1,0 +1,93 @@
+<mat-toolbar class="color" color="primary" >
+  <a data-toggle="collapse" ><i class="fa fa-bars" aria-hidden="true"></i></a> 
+<nav class="navbar navbar-expand-lg navbar-dark color">
+  <a class="navbar-brand" >Transport company</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <button class="logout-button" (click)="logout()" >
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+      </button>
+    </ul>
+  </div>
+</nav>
+</mat-toolbar>
+
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <h2 style="margin-top: 50px;">Liste des colis affecté a vous</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id_command</th>
+            <th scope="col">adresse d'expédition</th>
+            <th scope="col">adresse de livraison</th>
+            <th scope="col">poid</th>
+            <th scope="col">date</th>
+            <th scope="col">taille</th>
+            <th scope="col">nombre des produits</th>
+            <th scope="col">nom du client</th>
+            <th scope="col">numero de telephone</th>
+            <th scope="col">Accepter de livrer</th>
+            <th scope="col">refuser de livrer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
+          et acceder a ces attribut par user.name ou user.phone -->
+        <tr *ngFor="let cm of tabCollis  | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" >
+          <th scope="row">{{cm.idCmd}}</th>
+              <td>{{cm.adresseExpedition}}</td>
+              <td>{{cm.adresseLivraison}}</td>
+              <td>{{cm.poid}}</td>
+              <td>{{cm.date}}</td>
+              <td>{{cm.taille}}</td>
+              <td>{{cm.numberProduct}}</td>
+              <td>{{cm.client.firstName}}</td>
+              <td>{{cm.client.phone}}</td>
+              <td><button class="btn btn-success" (click)="accepterCommande(cm)">Accepter</button></td>
+              <td><input type="button" value="refuser" class="btn btn-danger" ></td>
+        </tr>
+     
+      
+      </tbody>
+  </table>
+  <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <h2 style="margin-top: 50px;">Liste des colis accepté </h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id_command</th>
+            <th scope="col">adresse d'expédition</th>
+            <th scope="col">adresse de livraison</th>
+            <th scope="col">poid</th>
+            <th scope="col">date</th>
+            <th scope="col">taille</th>
+            <th scope="col">nombre des produits</th>
+            <th scope="col">nom du client</th>
+            <th scope="col">numero de telephone</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+  <tr *ngFor="let cm of tabCommandAcceptees " >
+    <th scope="row">{{cm.idCmd}}</th>
+        <td>{{cm.adresseExpedition}}</td>
+        <td>{{cm.adresseLivraison}}</td>
+        <td>{{cm.poid}}</td>
+        <td>{{cm.date}}</td>
+        <td>{{cm.taille}}</td>
+        <td>{{cm.numberProduct}}</td>
+        <td>{{cm.client.firstName}}</td>
+        <td>{{cm.client.phone}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls> 
+
+  </div>
+  

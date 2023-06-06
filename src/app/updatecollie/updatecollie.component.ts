@@ -29,7 +29,8 @@ export class UpdatecollieComponent implements OnInit, OnChanges {
         "inputtaille": ["", Validators.required],
         "inputPoid": ["", Validators.required],
         "inputnumberProduct": ["", Validators.required],
-        "inputDate": ["", Validators.required]
+        "inputDate": ["", Validators.required],
+        "inputremarques":["",]
       }
     )
     this.initCommand();
@@ -42,6 +43,7 @@ export class UpdatecollieComponent implements OnInit, OnChanges {
     cl.numberProduct = this.inputform.controls['inputnumberProduct'].value
     cl.date = this.inputform.controls['inputDate'].value
     cl.remarques = this.inputform.controls['inputremarques'].value
+    cl.poid = this.inputform.controls['inputPoid'].value
     cl.taille = this.inputform.controls['inputtaille'].value
     this.commandserv.updateCommand(this.currentColis.idCmd, cl).subscribe(
       (altuser) => {
@@ -61,6 +63,7 @@ export class UpdatecollieComponent implements OnInit, OnChanges {
         this.inputform.controls['inputadresseLivraison'].setValue(cmd.adresseLivraison)
         this.inputform.controls['inputnumberProduct'].setValue(cmd.numberProduct)
         this.inputform.controls['inputDate'].setValue(cmd.date)
+        this.inputform.controls['inputPoid'].setValue(cmd.poid)
         this.inputform.controls['inputremarques'].setValue(cmd.remarques)
         this.inputform.controls['inputtaille'].setValue(cmd.taille)
 

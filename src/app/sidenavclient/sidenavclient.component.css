@@ -1,7 +1,12 @@
 .sidebar {
-  height: 100%;
+  width: 235px; /* Réduire la largeur selon vos besoins */
   padding-top: 20px;
   background-color: #007bff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding : 0;
 }
 
 .nav-pills .nav-link {
@@ -13,12 +18,14 @@
   border-radius: 30px;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
   background-color: #007bff;
   color: #fff;
 }
 
-.nav-pills .nav-link:focus, .nav-pills .nav-link:hover {
+.nav-pills .nav-link:focus,
+.nav-pills .nav-link:hover {
   color: #fff;
   background-color: grey;
   border-color: white;
@@ -28,9 +35,11 @@
   margin-right: 10px;
   font-size: 18px;
 }
+
 .nav-item {
   margin-bottom: 10px;
 }
-.welcome-section{
+
+.welcome-section {
   background-color: #007bff;
 }

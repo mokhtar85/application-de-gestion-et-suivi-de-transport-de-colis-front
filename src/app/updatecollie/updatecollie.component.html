@@ -30,7 +30,7 @@
       </div>
       <div class="col-md-6">
         <label for="inputDate" class="form-label">Date</label>
-        <input type="text" class="form-control" id="inputDate" formControlName="inputDate">
+        <input type="date" class="form-control" id="inputDate" formControlName="inputDate">
         <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputDate'].errors?.['required']">
           la date est un champs obligatoire </div>
       </div>

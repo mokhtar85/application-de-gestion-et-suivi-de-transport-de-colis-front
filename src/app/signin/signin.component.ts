@@ -24,12 +24,17 @@ loginUser(){
     (response: AuthenticationResponse) => {
       console.log('Token:', response.token, "client: ", response.client);
       console.log('Token:', response.token, "admin: ", response.admin);
+      console.log('Token:', response.token, "transporteur: ", response.transporteur);
       if(response.client != null){
       this.userservice.saveClient(response.client,response.token);
       this.route.navigate(['/client/addcollie'])}
       else if(response.admin != null){
         this.userservice.saveAdmin(response.admin,response.token);
         this.route.navigate(['/admin/dashbord'])
+      }
+      else if(response.transporteur != null){
+        this.userservice.saveTransporter(response.admin,response.token);
+        this.route.navigate(['/transporteurinterface/listcolisaffecter'])
       }
       
      

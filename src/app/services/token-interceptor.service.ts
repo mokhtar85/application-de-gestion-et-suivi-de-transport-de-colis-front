@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class TokenInterceptorService implements HttpInterceptor {
 
-  private excludedEndpoints = ['/api/v1/auth/authenticate', '/api/v1/auth/register'];
+  private excludedEndpoints = ['/api/v1/auth/authenticate', '/api/v1/auth/register','/api/v1/auth/registerTransporteur'];
 
   constructor() { }
 

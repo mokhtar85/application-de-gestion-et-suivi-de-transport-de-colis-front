@@ -1,15 +1,15 @@
 <p>
   <mat-toolbar color="primary">
-   
-    <span>Collies Application List</span>
+
+    <span>Liste des colis</span>
     <span class="example-spacer"></span>
-    <button  class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#addModal">Add Collies</button>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add Collies</button>
   </mat-toolbar>
 </p>
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
   <h2 style="margin-top: 50px;">List of collies</h2>
-<table class="table">
-    <thead> 
+  <table class="table">
+    <thead>
       <tr>
         <th scope="col">id_command</th>
         <th scope="col">adresseExpedition</th>
@@ -21,29 +21,34 @@
         <th scope="col">remarques</th>
         <th scope="col">update</th>
         <th scope="col">delete</th>
-            
+        <th scope="col">Affect</th>
+
       </tr>
     </thead>
     <tbody>
-            <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
+      <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
             et acceder a ces attribut par user.name ou user.phone -->
-          <tr *ngFor="let cm of tabCommand  | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
-            <th scope="row">{{cm.idCmd}}</th>
-            <td>{{cm.adresseExpedition}}</td>
-            <td>{{cm.adresseLivraison}}</td>
-            <td>{{cm.taille}}</td>
-            <td>{{cm.date}}</td>
-            <td>{{cm.poid}}</td>
-            <td>{{cm.numberProduct}}</td>
-            <td>{{cm.remarques}}</td>
-            <td><button   class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal" (click)="getClient(cm)">
-              update</button></td>
-            <td><input type="button" value="delete" class="btn btn-danger" (click)="deleteCmd(cm.idCmd)"></td>
-          </tr>
-        
-        </tbody>
-</table>
-<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+      <tr *ngFor="let cm of tabCommand  | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+        <th scope="row">{{cm.idCmd}}</th>
+        <td>{{cm.adresseExpedition}}</td>
+        <td>{{cm.adresseLivraison}}</td>
+        <td>{{cm.taille}}</td>
+        <td>{{cm.date}}</td>
+        <td>{{cm.poid}}</td>
+        <td>{{cm.numberProduct}}</td>
+        <td>{{cm.remarques}}</td>
+        <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal"
+            (click)="getClient(cm)">
+            update</button></td>
+        <td><input type="button" value="delete" class="btn btn-danger" (click)="deleteCmd(cm.idCmd)"></td>
+        <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#listTransporteurModal"
+            (click)="getClient(cm);getAllTransporters()">
+            Affecter</button></td>
+      </tr>
+
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 </div>
 <!--Add modal-->
 <div class="modal" tabindex="-1" id="addModal">
@@ -54,60 +59,68 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <div style="text-align:center;">
-    <form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;">
-      <div class="col-md-6">
-          <label for="wieght" class="form-label">adresseExpedition</label>
-          <input type="text" class="form-control" id="inputadresseExpedition" formControlName="inputadresseExpedition"  >
-          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputadresseExpedition'].errors?.['required']">
-            l'adresse d'éxpedition est un champs obliagatoire
+        <div style="text-align:center;">
+          <form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;">
+            <div class="col-md-6">
+              <label for="wieght" class="form-label">adresseExpedition</label>
+              <input type="text" class="form-control" id="inputadresseExpedition"
+                formControlName="inputadresseExpedition">
+              <div class="alert alert-danger" role="alert"
+                *ngIf="!inputform.pristine && inputform.controls['inputadresseExpedition'].errors?.['required']">
+                l'adresse d'éxpedition est un champs obliagatoire
+              </div>
             </div>
-      </div>
-        <div class="col-md-6">
-          <label for="type" class="form-label">adresseLivraison</label>
-          <input type="text" class="form-control" id="inputadresseLivraison" formControlName="inputadresseLivraison">
-          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputadresseLivraison'].errors?.['required']">
-            l'adresse de livraison est un champs obligatoire
+            <div class="col-md-6">
+              <label for="type" class="form-label">adresseLivraison</label>
+              <input type="text" class="form-control" id="inputadresseLivraison"
+                formControlName="inputadresseLivraison">
+              <div class="alert alert-danger" role="alert"
+                *ngIf="!inputform.pristine && inputform.controls['inputadresseLivraison'].errors?.['required']">
+                l'adresse de livraison est un champs obligatoire
+              </div>
             </div>
-      </div>
-      <div class="col-md-6">
-        <label for="size" class="form-label">taille</label>
-        <input type="text" class="form-control" id="inputtaille" formControlName="inputtaille">
-        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputtaille'].errors?.['required'] ">
-          la taille est un champs obligatoire
+            <div class="col-md-6">
+              <label for="size" class="form-label">taille</label>
+              <input type="text" class="form-control" id="inputtaille" formControlName="inputtaille">
+              <div class="alert alert-danger" role="alert"
+                *ngIf="!inputform.pristine && inputform.controls['inputtaille'].errors?.['required'] ">
+                la taille est un champs obligatoire
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputDate" class="form-label">Date</label>
+              <input type="date" class="form-control" id="inputDate" formControlName="inputDate">
+              <div class="alert alert-danger" role="alert"
+                *ngIf="!inputform.pristine && inputform.controls['inputDate'].errors?.['required']">
+                la date est un champs obligatoire </div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">Poid</label>
+              <input type="text" class="form-control" id="inputPoid" formControlName="inputPoid">
+              <div class="alert alert-danger" role="alert"
+                *ngIf="!inputform.pristine && inputform.controls['inputPoid'].errors?.['required']">
+                le Poid est un champs obligatoire
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="price" class="form-label">numberProduct</label>
+              <input type="text" class="form-control" id="inputnumberProduct" formControlName="inputnumberProduct">
+              <div class="alert alert-danger" role="alert"
+                *ngIf="!inputform.pristine && inputform.controls['inputnumberProduct'].errors?.['required']">
+                nombre de produit est un champs obligatoire
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="price" class="form-label">remarques</label>
+              <input type="text" class="form-control" id="inputremarques" formControlName="inputremarques">
+            </div>
+
+          </form>
         </div>
       </div>
-      <div class="col-md-6">
-        <label for="inputDate" class="form-label">Date</label>
-        <input type="text" class="form-control" id="inputDate" formControlName="inputDate">
-        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputDate'].errors?.['required']">
-          la date est un champs obligatoire </div>
-      </div>
-      <div class="col-md-6">
-          <label for="inputCity" class="form-label">Poid</label>
-          <input type="text" class="form-control" id="inputPoid" formControlName="inputPoid">
-          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPoid'].errors?.['required']">
-          le Poid est un champs obligatoire
-          </div>  
-      </div>
-        <div class="col-md-6">
-          <label for="price" class="form-label">numberProduct</label>
-          <input type="text" class="form-control" id="inputnumberProduct" formControlName="inputnumberProduct">
-          <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputnumberProduct'].errors?.['required']">
-            nombre de produit est un champs obligatoire
-          </div>  
-      </div>
-    
-    <div class="col-md-6">
-      <label for="price" class="form-label">remarques</label>
-      <input type="text" class="form-control" id="inputremarques" formControlName="inputremarques"> 
-  </div>
-   
-    </form>
-  </div>
-</div>
       <div class="modal-footer">
-        <button type="button" id="cancel"  data-bs-dismiss="modal">Close</button>
+        <button type="button" id="cancel" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" (click)="addcollie()">Save changes</button>
       </div>
     </div>
@@ -117,4 +130,65 @@
 <!-- update modal -->
 <div class="modal" tabindex="-1" id="updateModal">
   <app-updatecollie [currentColis]="currentColis" (closeModal)="closeModal($event)"></app-updatecollie>
+</div>
+<!-- liste de trasnporteur modal -->
+<div class="modal modal-lg" tabindex="-1" id="listTransporteurModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Affecter un colis à un transporteur</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+          <div class="table-container">
+            <table class="table mt-8 ">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">Firstname</th>
+                  <th scope="col">Lastname</th>
+                  <th scope="col">userName</th>
+                  <th scope="col">phone</th>
+                  <th scope="col">ville</th>
+                  <th scope="col">adress</th>
+                  <th scope="col">email</th>
+                  <th scope="col">nImmatricualtion</th>
+                  <th scope="col">cin</th>
+                  <th scope="col">choisissez</th>
+
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <!--si on a des contenus de different type dans le tableau on peut utiliser l'objet user a la place de mot "name" par exemple 
+                  et acceder a ces attribut par user.name ou user.phone -->
+                <tr
+                  *ngFor="let ts of tabtransporteur  | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                  <th scope="row">{{ts.id_user}}</th>
+                  <td>{{ts.firstName}}</td>
+                  <td>{{ts.lastName}}</td>
+                  <td>{{ts.userName}}</td>
+                  <td>{{ts.phone}}</td>
+                  <td>{{ts.city}}</td>
+                  <td>{{ts.adress}}</td>
+                  <td>{{ts.email}}</td>
+                  <td>{{ts.nImmatricualtion}}</td>
+                  <td>{{ts.cin}}</td>
+                  <td><button class="btn btn-success" (click)="selectTransporteur(ts); AffecteColisToTransporter()"> choisissez</button></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" id="cancel" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
 </div>

@@ -1,9 +1,15 @@
 .row1 {
-    --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
     display: flex;
-    flex-wrap: nowrap;
-    margin-top: calc(-1 * var(--bs-gutter-y));
-    margin-right: calc(-.5 * var(--bs-gutter-x));
-    margin-left: calc(-.5 * var(--bs-gutter-x));
-}
+  }
+  
+  .app-sidenav {
+    flex: 0 0 auto;
+    position: sticky;
+    left: 0;
+  }
+  
+  .app-main-content {
+    flex: 1 1 auto;
+    overflow-x: auto;
+  }
+  

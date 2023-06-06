@@ -11,4 +11,6 @@ export class Transporteur{
     email!:string;
     nImmatricualtion!:string;
     cin!:string;
+    licenseNumber!:string
+    vehicleType!:string
 }

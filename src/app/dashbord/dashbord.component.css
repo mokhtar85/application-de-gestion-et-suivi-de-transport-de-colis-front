@@ -1,4 +1,7 @@
-h2 {
-    text-align: center;
-    color: blue;
+
+.container-fluid{
+    padding-left:0;
+}
+.collapse navbar-collapse{
+    color:black;
 }

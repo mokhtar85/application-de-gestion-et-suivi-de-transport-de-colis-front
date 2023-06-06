@@ -4,3 +4,9 @@
 .color{
     background-color: #007bff;
 }
+.navbar-collapse {
+    justify-content: flex-end;
+  }
+  
+  
+  

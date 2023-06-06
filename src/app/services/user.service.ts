@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { AuthenticationResponse} from '../models/AuthenticationResponse.models';
 import { Admin } from '../models/Admin.models';
 import { Router } from '@angular/router';
+import { Transporteur } from '../models/Transporteur.models';
 
 
 
@@ -18,7 +19,7 @@ export class UserService {
   readonly getclientbyid="/api/v1/auth/getclientById"
   readonly upadteClient="/api/v1/auth/updateClient"
   readonly delete="/api/v1/auth/deleteUser"
-  readonly addClient="/api/v1/auth/api/v1/auth/register"
+  readonly addClient="/api/v1/auth/register"
   readonly getNombreClient="/api/v1/auth/nombre"
   readonly login="/api/v1/auth/authenticate"
   readonly getCurrentClient="/api/v1/auth/getCureentClient"
@@ -76,9 +77,18 @@ export class UserService {
     //quand tu ferme le navigateur en sessionstorage tu n'est plus authentié, tu dois refaire le signin
     sessionStorage.setItem("jwt",accessToken);
   }
+  saveTransporter(transporter:Transporteur,accessToken:string){
+    sessionStorage.setItem("transporter",JSON.stringify(transporter));
+    //quand tu ferme le navigateur en sessionstorage tu n'est plus authentié, tu dois refaire le signin
+    sessionStorage.setItem("jwt",accessToken);
+  }
+
   logout() {
     // Effacer les informations de session
     sessionStorage.removeItem("client");
+    sessionStorage.removeItem("transporter");
+    sessionStorage.removeItem("admin");
+
     sessionStorage.removeItem("jwt");
     // Rediriger vers la page de connexion ou une autre page appropriée
     // Utilisez la fonctionnalité de routage d'Angular pour rediriger

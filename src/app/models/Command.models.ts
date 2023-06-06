@@ -1,3 +1,4 @@
+import { Client } from "./Client.models";
 import { Product } from "./Product.models";
 
 export class Command{
@@ -10,4 +11,6 @@ export class Command{
   numberProduct!:number;
   remarques!:string;
   produits!: Product[];
+  client!:Client;
+  acceptee!:boolean;
 }

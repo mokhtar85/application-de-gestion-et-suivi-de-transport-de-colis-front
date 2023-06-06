@@ -5,84 +5,120 @@
         <div style="text-align: center;">
           <h2>Sign up</h2>
         </div>
-  <form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;" >
-    <div class="col-md-6">
-        <label for="Firstname" class="form-label">Firstname</label>
-        <input type="text" class="form-control" id="inputFirstname" name="inputFirstname" formControlName="inputFirstname"  >
-        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputFirstname'].errors?.['required']">
-            Firstname is required!
-          </div>
-    </div>
-      <div class="col-md-6">
-        <label for="Lastname" class="form-label">Lastname</label>
-        <input type="text" class="form-control" id="inputLastName" formControlName="inputLastName">
-        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputLastName'].errors?.['required']">
-            Lastname is required
-          </div>
-    </div>
-    <div class="col-md-6">
-      <label for="inputEmail4" class="form-label">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" name="inputEmail" formControlName="inputEmail">
-      <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputEmail'].errors?.['required'] ">
-        mail is required!
-      </div>
-      <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputEmail'].errors?.['email'] ">
-        please respect the syntaxe of an email!
-      </div>
-    </div>
-    <div class="col-md-6">
-      <label for="inputPassword4" class="form-label">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" name="inputPassword" formControlName="inputPassword">
-      <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPassword'].errors?.['required']">
-        please enter your password! </div>
-    
-    <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['inputPassword'].errors?.['minlength']">
-      Password must be at least 6 characters long.
-    </div>
-  
-    <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['inputPassword'].errors?.['pattern']">
-      Password must contain at least one letter and one number.
-    </div>
-  </div>
-    <div class="col-md-6">
-        <label for="inputPassword5" class="form-label">Confirm password</label>
-        <input type="password" class="form-control" name="inputPassword2" id="inputPassword5" formControlName="inputPassword2">
-        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPassword2'].errors?.['required']">
-            please Confirm your password!
-        </div>  
-        <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['inputPassword2'].errors?.['Mustmatch']">
-          Password and confirm password are not matched.
+        <div style="text-align: center;">
+          <p>S'inscrire en tant que :</p>
+          <a (click)="selectedType = 'client'" routerLink="signup">Client</a> |
+          <a (click)="selectedType = 'transporteur'" routerLink="signup">Transporteur</a>
         </div>
-    </div>
-      <div class="col-md-6">
-        <label for="Username" class="form-label">Usrname</label>
-        <input type="text" class="form-control" id="inputUsername" formControlName="inputUsername">
-        <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputUsername'].errors?.['required']">
-            username is required!
-        </div>  
-    </div>
-    <div class="col-md-6">
-      <label for="phone" class="form-label">phone number</label>
-      <input type="text" id="phone" name="inputphone" class="form-control" formControlName="inputphone">
-    </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" formControlName="inputAddress">
-  </div>
-  <div class="col-12">
-    <label for="inputCity" class="form-label">city</label>
-    <input type="text" class="form-control" id="inputCity" formControlName="inputCity" >
-  </div>
- 
-  <div class="col-md-6">
-    <button type="submit" class="btn btn-primary" (click)="addclient()">Sign Up</button>
-  </div>
+        <form class="row g-3" [formGroup]="inputform" style="margin: 0 auto;">
+          <div class="col-md-6" *ngIf="selectedType === 'client' || selectedType === 'transporteur'">
+            <label for="Firstname" class="form-label">Firstname</label>
+            <input type="text" class="form-control" id="inputFirstname" name="inputFirstname" formControlName="inputFirstname">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputFirstname'].errors?.['required']">
+              Firstname is required!
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="selectedType === 'client' || selectedType === 'transporteur'">
+            <label for="Lastname" class="form-label">Lastname</label>
+            <input type="text" class="form-control" id="inputLastName" formControlName="inputLastName">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputLastName'].errors?.['required']">
+              Lastname is required
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="selectedType === 'client' || selectedType === 'transporteur'">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" name="inputEmail" formControlName="inputEmail">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputEmail'].errors?.['required']">
+              Email is required!
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputEmail'].errors?.['email']">
+              Please enter a valid email address!
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="selectedType === 'client' || selectedType === 'transporteur'">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" name="inputPassword" formControlName="inputPassword">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPassword'].errors?.['required']">
+              Please enter your password!
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['inputPassword'].errors?.['minlength']">
+              Password must be at least 6 characters long.
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['inputPassword'].errors?.['pattern']">
+              Password must contain at least one letter and one number.
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="selectedType === 'client' || selectedType === 'transporteur'">
+            <label for="inputPassword5" class="form-label">Confirm password</label>
+            <input type="password" class="form-control" name="inputPassword2" id="inputPassword5" formControlName="inputPassword2">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputPassword2'].errors?.['required']">
+              Please confirm your password!
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="inputform.controls['inputPassword2'].errors?.['Mustmatch']">
+              Password and confirm password do not match.
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="selectedType === 'client' || selectedType === 'transporteur'">
+            <label for="Username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="inputUsername" formControlName="inputUsername">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputUsername'].errors?.['required']">
+              Username is required!
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="selectedType === 'client' || selectedType === 'transporteur'">
+            <label for="phone" class="form-label">Phone number</label>
+            <input type="text" id="phone" name="inputphone" class="form-control" formControlName="inputphone">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputphone'].errors?.['required']">
+              ce champs est obligatoire 
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="selectedType === 'client' || selectedType === 'transporteur'">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" formControlName="inputAddress">
+          </div>
+          <div class="col-12" *ngIf="selectedType === 'client' || selectedType === 'transporteur'">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity" formControlName="inputCity">
 
-  <div class="col-md-6">
-    <p style="margin-top: 8px;">You already have an account <a href="signin">Sign In</a></p>
+          </div>
+          <div class="col-md-6" *ngIf=" selectedType === 'transporteur'">
+            <label for="inputCity" class="form-label">cin</label>
+            <input type="text" class="form-control" id="inputcin" formControlName="inputCin">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputCin'].errors?.['required']">
+              ce champs est obligatoire 
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf=" selectedType === 'transporteur'">
+            <label for="inputCity" class="form-label">numero d'immatriculation</label>
+            <input type="text" class="form-control" id="inputimmatriculation" formControlName="inputNImmatriculation">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputNImmatriculation'].errors?.['required']">
+              ce champs est obligatoire 
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf=" selectedType === 'transporteur'">
+            <label for="inputCity" class="form-label">licenseNumber</label>
+            <input type="text" class="form-control" id="inputlicenseNumber" formControlName="inputLicenceNumber">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputLicenceNumber'].errors?.['required']">
+              ce champs est obligatoire 
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf=" selectedType === 'transporteur'">
+            <label for="inputCity" class="form-label">vehicleType</label>
+            <input type="text" class="form-control" id="inputvehicleType" formControlName="inputVihiculetype">
+            <div class="alert alert-danger" role="alert" *ngIf="!inputform.pristine && inputform.controls['inputVihiculetype'].errors?.['required']">
+              ce champs est obligatoire 
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="selectedType === 'client'">
+            <button type="submit" class="btn btn-primary" (click)="addclient()">Sign Up</button>
+          </div>
+          <div class="col-md-6" *ngIf=" selectedType === 'transporteur'">
+            <button type="submit" class="btn btn-primary" (click)="addTransporteur()">Sign Up</button>
+          </div>
+          <div class="col-md-6">
+            <p style="margin-top: 8px;">You already have an account <a href="signin">Sign In</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-  </form>
- </div>
-  </div>
- </div>
- </div>

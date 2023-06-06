@@ -4,6 +4,8 @@ import { UserService } from '../services/user.service';
 import { Client } from '../models/Client.models';
 import { Router } from '@angular/router';
 import { AuthenticationResponse } from '../models/AuthenticationResponse.models';
+import { Transporteur } from '../models/Transporteur.models';
+import { TransporteurService } from '../services/transporteur.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,8 +13,9 @@ import { AuthenticationResponse } from '../models/AuthenticationResponse.models'
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  selectedType: string = 'client';
   inputform!:FormGroup
-  constructor(private fb : FormBuilder,private userserv:UserService,private router:Router){
+  constructor(private fb : FormBuilder,private userserv:UserService,private router:Router,private trasnporteur:TransporteurService){
 
   }
   ngOnInit(): void {
@@ -24,6 +27,10 @@ export class SignupComponent implements OnInit {
          "inputphone":["",Validators.required],
          "inputAddress":["",Validators.required],
          "inputCity":["",Validators.required],
+         "inputCin":["",Validators.required],
+         "inputNImmatriculation":["",Validators.required],
+         "inputLicenceNumber":["",Validators.required],
+         "inputVihiculetype":["",Validators.required],
          "inputPassword":["", [
           Validators.required,
           Validators.minLength(6),
@@ -74,5 +81,35 @@ export class SignupComponent implements OnInit {
       }
     )
     this.router.navigate(["/signin"])
+  }
+  addTransporteur(){
+    let transporter = new Transporteur();
+    transporter.firstName=this.inputform.controls['inputFirstname'].value
+    transporter.lastName=this.inputform.controls['inputLastName'].value
+    transporter.email=this.inputform.controls['inputEmail'].value
+    transporter.password=this.inputform.controls['inputPassword'].value
+    transporter.confirmPassword=this.inputform.controls['inputPassword2'].value
+    transporter.userName=this.inputform.controls['inputUsername'].value
+    transporter.phone=this.inputform.controls['inputphone'].value
+    transporter.adress=this.inputform.controls['inputAddress'].value
+    transporter.city=this.inputform.controls['inputCity'].value
+    transporter.nImmatricualtion=this.inputform.controls['inputNImmatriculation'].value
+    transporter.cin=this.inputform.controls['inputCin'].value
+    transporter.licenseNumber=this.inputform.controls['inputLicenceNumber'].value
+    transporter.vehicleType=this.inputform.controls['inputVihiculetype'].value
+    this.trasnporteur.addTransporter(transporter).subscribe(
+      (response: AuthenticationResponse) => {
+        console.log('Token:', response.token, "transporteur: ", response.transporteur);
+        // Additional logic or display of the token as needed
+      },
+      (error) => {
+        console.error('Error:', error);
+        // Handle error response if needed
+      }
+    )
+    this.router.navigate(["/signin"])
+  }
+  isTransporteurSelected(): boolean {
+    return this.selectedType === 'transporteur';
   }
 }

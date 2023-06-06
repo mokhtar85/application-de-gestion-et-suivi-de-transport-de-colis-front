@@ -48,6 +48,11 @@ import { AddcolisfromlistComponent } from './addcolisfromlist/addcolisfromlist.c
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ListproductComponent } from './listproduct/listproduct.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { TransporteurinterfaceComponent } from './transporteurinterface/transporteurinterface.component';
+import { SidenavtransporteurComponent } from './sidenavtransporteur/sidenavtransporteur.component';
+import { ListtransporteurmodalComponent } from './listtransporteurmodal/listtransporteurmodal.component';
+import { ListcolisaffectedComponent } from './listcolisaffected/listcolisaffected.component';
+
 
 
 
@@ -83,7 +88,15 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     CardComponent,
     AddcolisfromlistComponent,
     ListproductComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    TransporteurinterfaceComponent,
+    SidenavtransporteurComponent,
+    ListtransporteurmodalComponent,
+    ListcolisaffectedComponent
+   
+    
+ 
+  
  
    
     
@@ -117,10 +130,14 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
    
   ],
   providers: [{
+   
+  
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
-  }],
+  
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

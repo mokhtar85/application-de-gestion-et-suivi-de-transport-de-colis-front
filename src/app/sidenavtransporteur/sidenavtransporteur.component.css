@@ -6,6 +6,7 @@
   left: 0;
   top: 0;
   bottom: 0;
+  padding : 0;
 }
 
 .nav-pills .nav-link {
@@ -42,3 +43,5 @@
 .welcome-section {
   background-color: #007bff;
 }
+
+

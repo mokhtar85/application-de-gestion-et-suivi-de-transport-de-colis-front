@@ -25,6 +25,10 @@ import { ChartComponent } from './chart/chart.component';
 import { MaptrackingComponent } from './maptracking/maptracking.component';
 import { ListcommandclientComponent } from './listcommandclient/listcommandclient.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { TransporteurinterfaceComponent } from './transporteurinterface/transporteurinterface.component';
+import { SidenavtransporteurComponent } from './sidenavtransporteur/sidenavtransporteur.component';
+import { ListcolisaffectedComponent } from './listcolisaffected/listcolisaffected.component';
+
 const routes: Routes = [
   {path: "", component:HomeComponent},
   {path: "", component:HeaderComponent},
@@ -37,6 +41,20 @@ const routes: Routes = [
   {path:"updateTransporteur/:id",component:UpdateTransporteurComponent},
   {path: "client", component:ClientComponent},
   {path: "sidnavclient", component:SidenavclientComponent},
+  {path: "transporteurinterface", component:TransporteurinterfaceComponent,
+  children: [
+    {
+      path: 'sidenavTransporteur',
+      component: SidenavtransporteurComponent
+    },
+    {
+      path: 'listcolisaffecter',
+      component: ListcolisaffectedComponent
+    }
+  
+    
+    
+  ] },
 
   
     {
