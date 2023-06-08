@@ -43,26 +43,37 @@ itemsPerPage = 5;
     accepterCommande(commande: Command): void {
       this.commandServ.accepterColi(commande.idCmd).subscribe(
         (commandeAcceptee: Command) => {
-          this.getAffectedColis();
-          this.getAcceptedColis();
-          // Supprimer la commande de la table AffectationColis
-          this.commandServ.deleteColisAffected(commande.idCmd).subscribe(
-            (response: number) => {
-              // Supprimer la commande de la liste tabCollis
-              this.tabCollis = this.tabCollis.filter(cm => cm.idCmd !== commande.idCmd);
-    
-              // Actualiser les données des colis affectés et des colis acceptés
-              this.getAffectedColis();
-              this.getAcceptedColis();
-            }
-          );
+          // Ajouter la commande acceptée à la liste des tabCommandAcceptees
           this.tabCommandAcceptees.push(commandeAcceptee);
+          
+          // Supprimer la commande de la liste tabCollis
+          this.tabCollis = this.tabCollis.filter(cm => cm.idCmd !== commande.idCmd);
+    
+          // Actualiser les données des colis affectés et des colis acceptés
+         
+          this.getAcceptedColis();
         }
       );
     }
+    
+    
+     
+    
     logout(){
       this.userservice.logout();
       
+    }
+    refuserCommande(commande: Command){
+      this.commandServ.deleteColisAffected(commande.idCmd).subscribe(
+        (response: number) => {
+          // Supprimer la commande de la liste tabCollis
+          this.tabCollis = this.tabCollis.filter(cm => cm.idCmd !== commande.idCmd);
+
+          // Actualiser les données des colis affectés et des colis acceptés
+          this.getAffectedColis();
+          this.getAcceptedColis();
+        }
+      );
     }
     
     }
