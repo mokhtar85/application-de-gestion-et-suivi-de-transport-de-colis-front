@@ -54,6 +54,7 @@ itemsPerPage = 5;
           this.getAcceptedColis();
         }
       );
+      
     }
     
     
@@ -63,18 +64,24 @@ itemsPerPage = 5;
       this.userservice.logout();
       
     }
-    refuserCommande(commande: Command){
+    refuserCommande(commande: Command) {
       this.commandServ.deleteColisAffected(commande.idCmd).subscribe(
-        (response: number) => {
+        () => {
           // Supprimer la commande de la liste tabCollis
           this.tabCollis = this.tabCollis.filter(cm => cm.idCmd !== commande.idCmd);
-
+    
           // Actualiser les données des colis affectés et des colis acceptés
           this.getAffectedColis();
           this.getAcceptedColis();
+        },
+        (error: any) => {
+          // Gérer les erreurs en cas d'échec de la suppression du colis
+          console.error(error);
         }
       );
     }
+    
+    
     
     }
     

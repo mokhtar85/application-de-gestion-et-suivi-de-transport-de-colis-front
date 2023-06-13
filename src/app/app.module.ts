@@ -52,6 +52,10 @@ import { TransporteurinterfaceComponent } from './transporteurinterface/transpor
 import { SidenavtransporteurComponent } from './sidenavtransporteur/sidenavtransporteur.component';
 import { ListtransporteurmodalComponent } from './listtransporteurmodal/listtransporteurmodal.component';
 import { ListcolisaffectedComponent } from './listcolisaffected/listcolisaffected.component';
+import { NotificationComponent } from './notification/notification.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NotificationclientComponent } from './notificationclient/notificationclient.component';
+
 
 
 
@@ -92,7 +96,9 @@ import { ListcolisaffectedComponent } from './listcolisaffected/listcolisaffecte
     TransporteurinterfaceComponent,
     SidenavtransporteurComponent,
     ListtransporteurmodalComponent,
-    ListcolisaffectedComponent
+    ListcolisaffectedComponent,
+    NotificationComponent,
+    NotificationclientComponent
    
     
  
@@ -125,7 +131,9 @@ import { ListcolisaffectedComponent } from './listcolisaffected/listcolisaffecte
     MatCardModule,
     ChartModule,
     NgxPaginationModule,
-    NgChartsModule
+    NgChartsModule,
+    MatDialogModule
+    
    
    
   ],

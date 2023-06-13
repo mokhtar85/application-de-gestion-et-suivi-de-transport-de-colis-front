@@ -1,0 +1,17 @@
+.container-fluid {
+    min-height: calc(100vh - 30px);
+  }
+  
+  .row {
+    flex-grow: 1;
+  }
+  
+  .col {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .router-outlet {
+    flex-grow: 1;
+  }
+  

@@ -1,0 +1,8 @@
+
+  <div class="notification-item" *ngFor="let notification of notifications">
+    <p class="notification-content">
+      <span class="notification-id">ID: {{ notification.id }}</span>
+      <span class="notification-text"> {{ notification.contenu }}</span>
+      <span class="notification-time">à l'heure: {{ notification.heureEnvoi | date:'dd/MM/yyyy HH:mm' }}</span>
+    </p>
+  </div>

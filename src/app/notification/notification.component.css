@@ -1,0 +1,27 @@
+.notification-item {
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .notification-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .notification-id {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .notification-text {
+    flex-grow: 1;
+  }
+  
+  .notification-time {
+    font-style: italic;
+    color: #888888;
+  }
+  

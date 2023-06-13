@@ -1,11 +1,40 @@
+.row {
+  display: flex;
+  height: 100vh;
+}
+
+.col-md-6 {
+  flex: 1;
+  height: 100%;
+  padding: 0; /* Supprime le padding */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 0; /* Supprime le padding */
+}
+
 .card {
   border: none;
-  width: 500px;
-  padding: 40px;
-  position: absolute;
-  top : 50%;
-  left : 50%;
-  transform: translate(-50%, -50%);
-  background: hsla(205, 46%, 30%, 1);
-  background : linear-gradient(90deg, hsla(205, 46%, 30%, 1) 0%, hsla(260, 29%, 36%, 1) 100% );
+  width: 100%;
+  height: 100%;
+  padding: 0; /* Supprime le padding */
+  background: rgb(96, 104, 109);
+  background: linear-gradient(90deg, rgb(198, 208, 214) 0%, hsla(260, 29%, 36%, 1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.full-height {
+  height: 100%;
+}
+.no-margin {
+  margin: 0;
+}
+.row.align-items-stretch {
+  align-items: stretch;
 }

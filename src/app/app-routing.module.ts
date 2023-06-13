@@ -28,6 +28,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { TransporteurinterfaceComponent } from './transporteurinterface/transporteurinterface.component';
 import { SidenavtransporteurComponent } from './sidenavtransporteur/sidenavtransporteur.component';
 import { ListcolisaffectedComponent } from './listcolisaffected/listcolisaffected.component';
+import { NotificationComponent } from './notification/notification.component';
 
 const routes: Routes = [
   {path: "", component:HomeComponent},
@@ -85,6 +86,11 @@ const routes: Routes = [
           {
             path: 'userheader',
             component: UserheaderComponent
+          },
+          {
+            path : 'notification',
+            component: NotificationComponent
+
           }
 
       ]
