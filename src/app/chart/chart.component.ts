@@ -17,11 +17,11 @@ export class ChartComponent implements OnInit{
       },
       title: {
           align: 'left',
-          text: 'Browser market shares. January, 2022'
+          text: 'Pourcentage des colis selon l état'
       },
       subtitle: {
           align: 'left',
-          text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+          text: 'cliquer sur les colonne pour voir les détails</a>'
       },
       accessibility: {
           announceNewData: {
@@ -33,7 +33,7 @@ export class ChartComponent implements OnInit{
       },
       yAxis: {
           title: {
-              text: 'Total percent market share'
+              text: 'pourcentage total des colis selon leurs état'
           }
   
       },
@@ -57,43 +57,23 @@ export class ChartComponent implements OnInit{
   
       series: [
           {
-              name: 'Browsers',
+              name: 'Etat',
               colorByPoint: true,
               data: [
                   {
-                      name: 'Chrome',
+                      name: 'en livraison',
                       y: 63.06,
-                      drilldown: 'Chrome'
+                      drilldown: 'en livraison'
                   },
                   {
-                      name: 'Safari',
+                      name: 'livré',
                       y: 19.84,
-                      drilldown: 'Safari'
+                      drilldown: 'livré'
                   },
                   {
-                      name: 'Firefox',
+                      name: 'en attente',
                       y: 4.18,
-                      drilldown: 'Firefox'
-                  },
-                  {
-                      name: 'Edge',
-                      y: 4.12,
-                      drilldown: 'Edge'
-                  },
-                  {
-                      name: 'Opera',
-                      y: 2.33,
-                      drilldown: 'Opera'
-                  },
-                  {
-                      name: 'Internet Explorer',
-                      y: 0.45,
-                      drilldown: 'Internet Explorer'
-                  },
-                  {
-                      name: 'Other',
-                      y: 1.582,
-                      drilldown: null
+                      drilldown: 'en attente'
                   }
               ]
           }
@@ -106,8 +86,8 @@ export class ChartComponent implements OnInit{
           },
           series: [
               {
-                  name: 'Chrome',
-                  id: 'Chrome',
+                  name: 'en livraison',
+                  id: 'en livraison',
                   data: [
                       [
                           'v65.0',
@@ -184,8 +164,8 @@ export class ChartComponent implements OnInit{
                   ]
               },
               {
-                  name: 'Firefox',
-                  id: 'Firefox',
+                  name: 'livré',
+                  id: 'livré',
                   data: [
                       [
                           'v58.0',
@@ -230,8 +210,8 @@ export class ChartComponent implements OnInit{
                   ]
               },
               {
-                  name: 'Internet Explorer',
-                  id: 'Internet Explorer',
+                  name: 'en attente',
+                  id: 'en attente',
                   data: [
                       [
                           'v11.0',
@@ -248,76 +228,6 @@ export class ChartComponent implements OnInit{
                       [
                           'v8.0',
                           0.47
-                      ]
-                  ]
-              },
-              {
-                  name: 'Safari',
-                  id: 'Safari',
-                  data: [
-                      [
-                          'v11.0',
-                          3.39
-                      ],
-                      [
-                          'v10.1',
-                          0.96
-                      ],
-                      [
-                          'v10.0',
-                          0.36
-                      ],
-                      [
-                          'v9.1',
-                          0.54
-                      ],
-                      [
-                          'v9.0',
-                          0.13
-                      ],
-                      [
-                          'v5.1',
-                          0.2
-                      ]
-                  ]
-              },
-              {
-                  name: 'Edge',
-                  id: 'Edge',
-                  data: [
-                      [
-                          'v16',
-                          2.6
-                      ],
-                      [
-                          'v15',
-                          0.92
-                      ],
-                      [
-                          'v14',
-                          0.4
-                      ],
-                      [
-                          'v13',
-                          0.1
-                      ]
-                  ]
-              },
-              {
-                  name: 'Opera',
-                  id: 'Opera',
-                  data: [
-                      [
-                          'v50.0',
-                          0.96
-                      ],
-                      [
-                          'v49.0',
-                          0.82
-                      ],
-                      [
-                          'v12.1',
-                          0.14
                       ]
                   ]
               }

@@ -1,13 +1,21 @@
-<p>
-  <mat-toolbar color="primary">
-
-    <span>Liste des colis</span>
-    <span class="example-spacer"></span>
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add Collies</button>
-  </mat-toolbar>
-</p>
+<div class=" container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark color custom-navbar">
+    <a class="navbar-brand">  liste des colis</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" style="color: black;">
+      <ul class="navbar-nav ml-auto">
+        <!-- Autres éléments du menu -->
+        <li class="nav-item">
+          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add Collies</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+ 
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
-  <h2 style="margin-top: 50px;">List of collies</h2>
+ 
   <table class="table">
     <thead>
       <tr>
@@ -191,4 +199,4 @@
       <button type="button" id="cancel" data-bs-dismiss="modal">Close</button>
     </div>
   </div>
-</div>
+</div></div>

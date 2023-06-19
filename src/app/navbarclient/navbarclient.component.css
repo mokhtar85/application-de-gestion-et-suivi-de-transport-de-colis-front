@@ -1,12 +1,16 @@
 .full-width {
-    width: 100%;
+  width: 100%;
 }
-.color{
-    background-color: #007bff;
+
+.color {
+  background-color: #007bff;
 }
+
 .navbar-collapse {
-    justify-content: flex-end;
-  }
-  
-  
-  
+  justify-content: flex-end;
+}
+
+.notification-button {
+  margin-left: auto;
+}
+

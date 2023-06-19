@@ -1,29 +1,27 @@
 <div class=" container-fluid">
-  <mat-toolbar class="color" color="primary">
-    <div class="navbar navbar-expand-lg navbar-dark color">
-      <a class="navbar-brand">Dashboard</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <button class="logout-button" (click)="logout()">
-              <i class="fa fa-sign-out" aria-hidden="true"></i>
-            </button>
-          </li>
-          <li class="nav-item">
-            <button class="notification-button" (click)="toggleNotificationPanel()">
-              <i class="fa fa-bell" aria-hidden="true"></i>
-              <span class="notification-marker" *ngIf="hasUnreadNotifications"></span>
-            </button>
-            
-          </li>
-        </ul>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-dark color">
+    <a class="navbar-brand">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" style="color: black;">
+      <ul class="navbar-nav ml-auto">
+        <!-- Autres éléments du menu -->
+        <button class="notification-button" (click)="toggleNotificationPanel()">
+          <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+          <span class="notification-marker" *ngIf="hasUnreadNotifications"></span>
+        </button>
+        
+        <li class="nav-item">
+          <button class="logout-button ml-2" (click)="logout()">
+            <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+          </button>
+        </li>
+        
+      </ul>
     </div>
-  </mat-toolbar>
+  </nav>
+  
     <!-- Content Row -->
     <app-card></app-card>
    <app-chart></app-chart>

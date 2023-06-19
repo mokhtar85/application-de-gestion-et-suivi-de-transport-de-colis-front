@@ -1,11 +1,19 @@
-<p>
-  <mat-toolbar color="primary">
-   
-    <span>listes des transporteurs</span>
-    <span class="example-spacer"></span>
-    <button  class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#addModal">Add Transporter</button>
-  </mat-toolbar>
-</p>
+<div class=" container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark color custom-navbar">
+  <a class="navbar-brand">  liste des transporteurs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav" style="color: black;">
+    <ul class="navbar-nav ml-auto">
+      <!-- Autres éléments du menu -->
+      <li class="nav-item">
+        <button  class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#addModal">Add Transporter</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
 
   <table class="table mt-8">
@@ -39,7 +47,7 @@
         <td>{{ts.email}}</td>
         <td>{{ts.nImmatricualtion}}</td>
         <td>{{ts.cin}}</td>
-        <td><button   class="btn btn-info" data-bs-toggle="modal" data-bs-target="#updatemodal" (click)="getTransporter(ts)">update</button>
+        <td><button   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updatemodal" (click)="getTransporter(ts)">update</button>
         </td>
         <td><input type="button" value="delete" class="btn btn-danger" (click)="deleteTransporteur(ts.id_user)"></td>
       </tr>
@@ -141,4 +149,5 @@
 <!--Transporter modal update-->
 <div class="modal" tabindex="-1" id="updatemodal">
 <app-update-transporteur [currentTransporter]="currentTransporter" (closeModal)="closeModal($event)"></app-update-transporteur>
+</div>
 </div>

@@ -23,4 +23,20 @@
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
+  .full-width {
+    width: 100%;
+  }
+  
+  .color {
+    background-color: #007bff;
+  }
+  
+  .navbar-collapse {
+    justify-content: flex-end;
+  }
+  
+  .notification-button {
+    margin-left: auto;
+  }
+  
   

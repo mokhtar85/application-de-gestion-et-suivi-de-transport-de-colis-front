@@ -13,7 +13,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { AdminComponent } from './admin/admin.component';
-import {SidebarModule} from 'ng-cdbangular';
+import {ModalModule, SidebarModule} from 'ng-cdbangular';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -55,6 +55,7 @@ import { ListcolisaffectedComponent } from './listcolisaffected/listcolisaffecte
 import { NotificationComponent } from './notification/notification.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NotificationclientComponent } from './notificationclient/notificationclient.component';
+import { SuccessModalComponent } from './success-modal-component/success-modal-component.component';
 
 
 
@@ -98,7 +99,8 @@ import { NotificationclientComponent } from './notificationclient/notificationcl
     ListtransporteurmodalComponent,
     ListcolisaffectedComponent,
     NotificationComponent,
-    NotificationclientComponent
+    NotificationclientComponent,
+    SuccessModalComponent
    
     
  
@@ -132,7 +134,10 @@ import { NotificationclientComponent } from './notificationclient/notificationcl
     ChartModule,
     NgxPaginationModule,
     NgChartsModule,
-    MatDialogModule
+    MatDialogModule,
+    ModalModule,
+    
+
     
    
    

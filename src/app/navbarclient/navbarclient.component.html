@@ -1,25 +1,22 @@
-<mat-toolbar class="color" color="primary" [ngClass]="{'full-width': !isNavbarClicked}">
-  <a data-toggle="collapse" (click)="afficherSidebarClient()"><i class="fa fa-bars" aria-hidden="true"></i></a> 
-  <nav class="navbar navbar-expand-lg navbar-dark color">
-    <a class="navbar-brand">Transport company</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav" style="color: black;">
-      <ul class="navbar-nav">
-        <li class="nav-item ml-auto">
-          <button class="logout-button" (click)="logout()">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="notification-button" (click)="toggleNotificationPanel()">
-            <i class="fa fa-bell" aria-hidden="true"></i>
-            <span class="notification-marker" *ngIf="hasUnreadNotifications"></span>
-          </button>
-          
-        </li>
-      </ul>
-    </div>
-  </nav>
-</mat-toolbar>
+<nav class="navbar navbar-expand-lg navbar-dark color">
+  <a class="navbar-brand">Transport company</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav" style="color: black;">
+    <ul class="navbar-nav ml-auto">
+      <!-- Autres éléments du menu -->
+      <li class="nav-item">
+        <button class="notification-button" (click)="toggleNotificationPanel()">
+          <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+          <span class="notification-marker" *ngIf="hasUnreadNotifications"></span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="logout-button ml-2" (click)="logout()">
+          <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

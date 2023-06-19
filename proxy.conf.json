@@ -1,0 +1,15 @@
+{
+    "/api": {
+      "target": "https://api.mapbox.com",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+        "^/api": ""
+      },
+      "headers": {
+        "Referer": "http://localhost:4200"
+      }
+    }
+  }
+  

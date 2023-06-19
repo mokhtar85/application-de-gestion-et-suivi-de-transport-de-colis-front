@@ -2,6 +2,7 @@ h2 {
   text-align: center;
   color: blue;
 }
+
 .table {
   border-collapse: collapse;
   width: 100%;
@@ -26,7 +27,6 @@ tr:hover {
 }
 
 button {
-  background-color: #007bff;
   color: #fff;
   border: none;
   padding: 8px 16px;
@@ -34,12 +34,10 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #0069d9;
-}
 .example-spacer {
   flex: 1 1 auto;
 }
+
 .table-container {
   width: 100%;
   overflow-x: auto;
@@ -56,18 +54,59 @@ button:hover {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .modal-lg .modal-dialog {
   max-width: 1100px; /* Ajustez la valeur selon vos besoins */
 }
 
+.full-width {
+  width: 100%;
+}
 
+.navbar-collapse {
+  justify-content: flex-end;
+}
 
+.container-fluid {
+  padding-left: 0;
+}
 
+.collapse navbar-collapse {
+  color: black;
+}
 
+.navbar-collapse.show {
+  display: block !important;
+}
 
+.navbar-toggler.active {
+  background-color: #ddd;
+}
 
+.notification-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
 
+.full-width {
+  width: 100%;
+}
 
+.color {
+  background-color: #007bff;
+}
 
+.navbar-collapse {
+  justify-content: flex-end;
+}
 
-
+.notification-button {
+  margin-left: auto;
+}

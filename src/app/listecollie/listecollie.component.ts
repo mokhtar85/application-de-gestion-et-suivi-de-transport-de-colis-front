@@ -6,6 +6,8 @@ import { identity } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Transporteur } from '../models/Transporteur.models';
 import { TransporteurService } from '../services/transporteur.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { SuccessModalComponent } from '../success-modal-component/success-modal-component.component';
 
 @Component({
   selector: 'app-listecollie',
@@ -122,5 +124,6 @@ deleteCmd(id:number){
           console.log(error);
         }
       )
+      
     }
 }
