@@ -1,7 +1,6 @@
 # Colis Management and Real-Time Tracking Application
-This is a web application for parcel management and real-time tracking that I developed during my end-of-study internship at Bee Coders. The project was built using Angular, and it provided me with the opportunity to learn many aspects of front-end development. (#FormationAngularMars)
+This is a web application for parcel management and real-time tracking that I developed during my end-of-study internship at Bee Coders. The project was built using Angular, and it provided me with the opportunity to learn many aspects of front-end development. 
 
-This project was generated with Angular CLI version 15.2.4.
 # FormationAngularMars
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
